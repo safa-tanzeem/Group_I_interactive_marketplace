@@ -1,20 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "buyer_functions.h"
+#include "product.h"
 
 
 void buyerMenu(){
 /* The functions brings the user to the buyer's perpective.
 *Allows the user to pick products to buy, then check them out
 *Other functuons include adding funds to their wallets, and pay for products
-*/
-	printf("buyer\n");
+*/ 
+    
+    printf("\n---BUYER MENU---\n");
+    add_cart();
+    
+	return;
 }
 
 void sellerMenu(){
 	printf("seller\n");
 }
-
-
 
 
 
@@ -40,9 +44,11 @@ do{
 	switch(choice){
 		case 1:
 			buyerMenu();
+			break;
 		
 		case 2:
 			sellerMenu();
+			break;
 	}
 	
 

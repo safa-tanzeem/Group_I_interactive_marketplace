@@ -1,0 +1,2 @@
+Hair Comb,Beauty and Apparel,0,11,12,4.99,1234,0.45 
+Tire,Automative,2,12,15,10.99,1456,0.33
