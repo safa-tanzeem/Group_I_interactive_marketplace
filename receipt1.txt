@@ -1,0 +1,4 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Hair Comb - 11 - 1 - 4.99 - N

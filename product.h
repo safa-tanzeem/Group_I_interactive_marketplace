@@ -12,7 +12,7 @@ typedef struct PRODUCT
     int discount_code ;
     float discount_percentage ;
     int number_selected;
-    int flag_code;
+    char flag_code;
     struct PRODUCT* next_product;
 }PRODUCT;
 

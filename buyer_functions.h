@@ -162,12 +162,12 @@ int add_cart(){
 
 			if(tracker->discount_code==dis_code){
 		        
-		        if(tracker->flag_code != 1){
+		        if(tracker->flag_code != 'Y'){
 				
 		        	tracker->price = (1-(tracker->discount_percentage))*(tracker->price);
 	            	printf("\nYou applied a discount code to %s.\n", tracker->name);
              		printf("You're new price per product is %.2f.\n", tracker->price);
-                	tracker->flag_code = 1;
+                	tracker->flag_code = 'Y';
 	            	break;
 		    	}
 		    	else{
@@ -181,7 +181,7 @@ int add_cart(){
 	
 	user_list=tracker;
 	
-	checkout(user_list);
+	checkout(&user_list);
 	return 0;
 	
 }
@@ -200,11 +200,11 @@ int receipt_exists(const char *receipt_name){
 	return 1;
 }
 
-int checkout(struct PRODUCT buyer_products){
+int checkout(struct PRODUCT **buyer_products){
 	
 	struct PRODUCT *tracker; 
 	tracker = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
-	tracker = buyer_products;
+	tracker = (*buyer_products);
     
 	int counter = 1;
 	char counter_str [10];
@@ -218,7 +218,6 @@ int checkout(struct PRODUCT buyer_products){
 		
 		if(receipt_exists(receipt_name)==0)
 		{
-			printf("NULL");
 			break;
 		}
 		
@@ -238,10 +237,16 @@ int checkout(struct PRODUCT buyer_products){
     output = fopen(receipt_name, "w+");
     fprintf(output, "Thank you for your purchase today!\n--------------------------------------------------------------------\n");
     
-	while(tracker->next_product!=NULL){
-    	fprintf(output, "Thank you for your purchase today!\n--------------------------------------------------------------------\n");
+	while(tracker!=NULL){
+		
+		if(tracker->flag_code!='Y'){
+			tracker->flag_code = 'N';
+		}
+		
+		fprintf(output, "Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage\n");
+    	fprintf(output, "%s     -      %i      -       %i      -      %.2f      -       %c",tracker->name, tracker->product_number, tracker->number_selected, tracker->price, tracker->flag_code);
     	
-    	
+    	tracker=tracker->next_product;
 	}
     fclose(output);
     printf("\nThank you for shopping with us! Your receipt has been outputted.\n\n");
