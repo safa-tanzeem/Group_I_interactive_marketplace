@@ -8,7 +8,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "include/Buyer/buyer_wallet.h"
+#include "buyer_wallet.h"
 
 /**
  * \brief This function adds balance in the online wallet of the buyer
@@ -56,7 +56,4 @@ float update_balance(float wallet_balance, float total_amt_in_cart){
     return wallet_balance;
 }
 
-int main(){
-    update_balance(10, 50);
 
-}
