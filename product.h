@@ -1,3 +1,12 @@
+/*
+ * product.h
+ *
+ *  Created on: Nov. 15, 2020
+ *      Author: kaveh
+ */
+
+
+
 #ifndef PRODUCT_H_INCLUDED
 #define PRODUCT_H_INCLUDED
 

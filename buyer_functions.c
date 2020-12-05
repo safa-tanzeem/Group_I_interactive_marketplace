@@ -1,21 +1,9 @@
-/*
- * buyer_functions.c
- *
- *  Created on: November, 20th , 2020
- *      Author: muhammadbsalman
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "file_scanner.h"
 #include "product.h"
-#include "buyer_wallet.h"
-
-/**
- * \brief This function diplays the categories of different products
- * @return choice The choice of category represented as an integer
- */
+#include "buyer_functions.h"
 
 int display_categories(){
 	
@@ -45,10 +33,9 @@ int display_categories(){
 }
 
 
-/**
- * \brief This function diplays the products avaiable in the marketplace
- * @return new_product_head A list of products in the marketplace
- */
+
+
+
 
 struct PRODUCT* display_product(){
 	
@@ -66,7 +53,7 @@ struct PRODUCT* display_product(){
 	
 	choice = display_categories();
 	
-	printf("Name - Product Number - Price - Stock #\n----------------------------\n");
+	printf("Name - Product Number - Price\n----------------------------\n");
 	
 	while(temp!= NULL){
         
@@ -74,8 +61,8 @@ struct PRODUCT* display_product(){
             
 			printf("%s - ", temp->name);	
             printf("%i - ",temp->product_number);
-            printf("$%.2f - ",temp->price);
-			printf("$%.2f\n",temp->stock);
+            printf("$%.2f\n",temp->price);
+
 		}
 		
 		temp=temp->next_product;
@@ -86,121 +73,9 @@ struct PRODUCT* display_product(){
     
 }
 
-/**
- * \brief This function checks if the receipt name already exists
- * @param[in] receipt_name The filename of the receipt to check if existing
- * @return 0 file with specified name does not exist
- * @return 1 file with specified name exists
- */
-
-int receipt_exists(const char *receipt_name){
-	
-	
-	strcat(receipt_name, ".txt");
-	FILE *receipt = fopen(receipt_name, "r");
-
-	if (receipt == NULL){
-		return 0;
-	}
-	fclose(receipt);
-
-	return 1;
-}
-
-/**
- * \brief This function prints a buyer receipt and "checks out" the buyer, calling to update stock
- * @param[in] buyer_products List of products selected to be bought by the buyer
- * @param[in] balance Amount of funds in buyer's wallet
- */
-
-
-void checkout(struct PRODUCT **buyer_products, float balance){
-
-	struct PRODUCT *tracker; 
-	tracker = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
-	tracker = (*buyer_products);
-    
-    float total_price=0;
-	int counter = 1;
-	char counter_str [10];
-    char receipt_name [20];
-    char receipt_def [20];
-    
-    strcpy(receipt_name,"receipt");
-    
-    
-	while (1){
-		
-		if(receipt_exists(receipt_name)==0)
-		{
-			break;
-		}
-		
-		strcpy(receipt_def,"receipt");
-		
-		itoa(counter, counter_str, 10);
-
-		strcat(receipt_def, counter_str);
-	
-		strcpy(receipt_name, receipt_def);
-
-		counter++;
-
- 	}
- 	
- 	FILE *output; 
-    output = fopen(receipt_name, "w+");
-    fprintf(output, "Thank you for your purchase today!\n--------------------------------------------------------------------\n");
-    
-	while(tracker!=NULL){
-		
-		if(tracker->flag_code!='Y'){
-			tracker->flag_code = 'N';
-		}
-		
-		fprintf(output, "Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage\n");
-    	fprintf(output, "%s     -      %i      -       %i      -      %.2f      -       %c",tracker->name, tracker->product_number, tracker->number_selected, tracker->price, tracker->flag_code);
-    	
-    	total_price += ((tracker->number_selected)*(tracker->price));
-    	tracker=tracker->next_product;
-	}
-	
-	balance = update_balance(balance, total_price);
-	
-	if(balance==-2.0){
-		fprintf(output, "NOT ENOUGH FUNDS TO COMPLETE PURCHASE!");	
-	}
-	
-	else{
-		fprintf(output, "\n\nTOTAL COST OF PRODUCTS: $%.2f", total_price);
-		fprintf(output, "\nRemaining funds: $%.2f", balance);		
-	}
-	
-		
-    fclose(output);
-    printf("\nThank you for shopping with us! Your receipt has been outputted.\n\n");
-    
-    tracker = (*buyer_products);
-    while(tracker!=NULL){
-        update_stock(tracker->product_number, tracker->number_selected, 0);
-    	tracker=tracker->next_product;
-	}
-    
-    
-	return;
-	
-}
-
-/**
- * \brief This function adds products to cart, as well as applying discount codes
- */
-
-void add_cart(){
+int add_cart(){
 	
 	int product_sel;
-	float balance;
-	
-	balance = add_balance();
 	    
     struct PRODUCT *new_product_head; //declare new node
 	new_product_head = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
@@ -295,7 +170,7 @@ void add_cart(){
 	            	break;
 		    	}
 		    	else{
-		    		printf("\nYou have already applied a discount to this product!\n");
+		    		printf("You have already applied a discount to this product!\n");
 				}
 			}
 			
@@ -305,7 +180,76 @@ void add_cart(){
 	
 	user_list=tracker;
 	
-	checkout(&user_list, balance);
-	return;
+	checkout(&user_list);
+	return 0;
+	
+}
+
+int receipt_exists(const char *receipt_name){
+	
+	
+	strcat(receipt_name, ".txt");
+	FILE *receipt = fopen(receipt_name, "r");
+
+	if (receipt == NULL){
+		return 0;
+	}
+	fclose(receipt);
+
+	return 1;
+}
+
+int checkout(struct PRODUCT **buyer_products){
+	
+	struct PRODUCT *tracker; 
+	tracker = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
+	tracker = (*buyer_products);
+    
+	int counter = 1;
+	char counter_str [10];
+    char receipt_name [20];
+    char receipt_def [20];
+    
+    strcpy(receipt_name,"receipt");
+    
+    
+	while (1){
+		
+		if(receipt_exists(receipt_name)==0)
+		{
+			break;
+		}
+		
+		strcpy(receipt_def,"receipt");
+		
+		itoa(counter, counter_str, 10);
+
+		strcat(receipt_def, counter_str);
+	
+		strcpy(receipt_name, receipt_def);
+
+		counter++;
+
+ 	}
+ 	
+ 	FILE *output; 
+    output = fopen(receipt_name, "w+");
+    fprintf(output, "Thank you for your purchase today!\n--------------------------------------------------------------------\n");
+    
+	while(tracker!=NULL){
+		
+		if(tracker->flag_code!='Y'){
+			tracker->flag_code = 'N';
+		}
+		
+		fprintf(output, "Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage\n");
+    	fprintf(output, "%s     -      %i      -       %i      -      %.2f      -       %c",tracker->name, tracker->product_number, tracker->number_selected, tracker->price, tracker->flag_code);
+    	
+    	tracker=tracker->next_product;
+	}
+    fclose(output);
+    printf("\nThank you for shopping with us! Your receipt has been outputted.\n\n");
+    
+	return 0;
 	
 }

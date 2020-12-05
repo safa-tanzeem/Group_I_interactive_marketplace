@@ -1,15 +1,23 @@
+/*
+ * main.c
+ *
+ *  Created on: Nov. 1st, 2020
+ *      Author: muhammadbsalman
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "buyer_functions.h"
 #include "product.h"
 
 
-void buyerMenu(){
-/* The functions brings the user to the buyer's perpective.
+/**
+ * \brief The functions brings the user to the buyer's perpective.
 *Allows the user to pick products to buy, then check them out
 *Other functuons include adding funds to their wallets, and pay for products
-*/ 
-    
+*/
+void buyerMenu(){
+ 
     printf("\n---BUYER MENU---\n");
     add_cart();
     
@@ -21,12 +29,16 @@ void sellerMenu(){
 }
 
 
-
+/**
+ * \brief main function, will re-direct to buyer-seller menus
+*/
 
 int main(){
 
-/*Variable that stores user's initial buyer/seller preferance
-*Setting to 3, because that is the default quit option*/
+
+//Variable that stores user's initial buyer/seller preferance
+//Setting to 3, because that is the default quit option
+
 int choice = 3; 
 
 do{
@@ -57,17 +69,6 @@ do{
 
 printf("\nHope you enjoyed your experience!\nSee you soon!\n");
 printf("-----YOU HAVE LEFT THE INTERACTIVE MARKETPLACE-----");
-
-
-
-
-
-
-
-
-
-
-
 
 
 return 0;

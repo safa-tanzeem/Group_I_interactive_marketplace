@@ -2,11 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "product.h"
-
-/**
- * \brief This function returns a double array of category names
- * @return categories double array with category names
- */
+#include "file_scanner.h"
 
 const char **get_categories(){
     int i;
@@ -29,12 +25,6 @@ const char **get_categories(){
 	
 	return categories;
 }
-
-/**
- * \brief Reads list of products and their parameters from a text file, storing in a linked list
- * @return head The head of a linked list of type PRODUCT
- */
-
 
 struct PRODUCT *get_products(){
 	
