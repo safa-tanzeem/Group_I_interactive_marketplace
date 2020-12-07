@@ -1,9 +1,10 @@
 /*
  * buyer_wallet.c
  *
- *  Created on: Dec. 3, 2020
+ *  Created on: Dec. 5, 2020
  *      Author: safatanzeem
  */
+
 
 #include<stdio.h>
 #include<string.h>
@@ -16,9 +17,9 @@
  */
 float add_balance(){
     float balance = 0.0;
-    printf("Enter the amount in dollars: ");
+    printf("Declare the amount you have in CAD: ");
     scanf("%f", &balance);
-    printf("Balance added successfully \n");
+    printf("Balance added successfully! \n");
     return balance;
 }
 
@@ -37,7 +38,7 @@ float update_balance(float wallet_balance, float total_amt_in_cart){
         printf("Enter 1: To add balance \nEnter 0: To exit \n");
         scanf("%d", &flag);
         if (flag == 0){
-            return -2; // Exit the program
+            return -2.0; // Exit the program
         }else if (flag == 1){
             float new_balance = 0.0;
             new_balance = add_balance();
@@ -49,11 +50,9 @@ float update_balance(float wallet_balance, float total_amt_in_cart){
         }
     }else{
         wallet_balance = wallet_balance - total_amt_in_cart;
-        printf("Transaction successful, Remaining Balance is: %f \n",
+        printf("Transaction successful, Remaining Balance is: $%.2f \n",
                 wallet_balance);
     }
 
     return wallet_balance;
 }
-
-
