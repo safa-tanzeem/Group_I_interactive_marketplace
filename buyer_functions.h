@@ -10,5 +10,4 @@
 
 void add_cart();
 
-
 #endif /* BUYER_FUNCTIONS_H_ */

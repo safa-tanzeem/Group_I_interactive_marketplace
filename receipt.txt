@@ -1,0 +1,8 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+mattress     -      10003      -       1      -      1000.00      -       NProduct_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+chips     -      10002      -       1      -      20.00      -       N
+
+TOTAL COST OF PRODUCTS: $1020.00
+Remaining funds: $1120.00

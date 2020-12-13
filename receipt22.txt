@@ -1,0 +1,7 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Coffee Table     -      10002      -       1      -      149.99      -       N
+
+TOTAL COST OF PRODUCTS: $149.99
+Remaining funds: $90.01

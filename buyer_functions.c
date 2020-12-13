@@ -9,10 +9,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "file_scanner.h"
-#include "product.h"
+#include "scanner.h"
+#include "seller.h"
 #include "buyer_functions.h"
 #include "buyer_wallet.h"
+#include "stock_update.h"
+#include "update_buyer_info.h"
+#include "seller_manager.h"
+
 
 /**
  * \brief This function diplays the categories of different products
@@ -66,6 +70,16 @@ struct PRODUCT* display_product(){
     temp = new_product_head;
 
     choice = display_categories();
+    
+    printf("\nWould you like to sort products based on \n1. Ascending price\n2. Descending Price\nAny Other Key: No sorting necessary ?:\n");
+    scanf("%i", &sort_choice);
+    
+    if(sort_choice== 1){
+    	sort_products_ascend(new_product_head);
+	}
+	else if(sort_choice== 2){
+    	sort_products_descend(new_product_head);
+	}
 
     printf("Name - Product Number - Price - Stock #\n----------------------------\n");
 
@@ -129,22 +143,22 @@ void checkout(struct PRODUCT **buyer_products, float balance){
     char receipt_def[20];
     char buyer_name[20];
     char buyer_addr [40];
-    int buyer_phone;
-    
-	//take buyer information
-	printf("\nBuyer Name: ");
-	scanf("%c", &temp);
-	scanf("%[^\n]", buyer_name);
-	
-	printf("\nBuyer Address: ");
-	scanf("%c", &temp);
-	scanf("%[^\n]", buyer_addr);
-	
-	printf("\nBuyer Phone: ");
-	scanf("%i", &buyer_phone);
-	
-	//generate receipt
-	strcpy(receipt_name,"receipt");
+    char buyer_phone[10];
+
+    //take buyer information
+    printf("\nBuyer Name: ");
+    scanf("%c", &temp);
+    scanf("%[^\n]", buyer_name);
+
+    printf("\nBuyer Address: ");
+    scanf("%c", &temp);
+    scanf("%[^\n]", buyer_addr);
+
+    printf("\nBuyer Phone: ");
+    scanf("%s", buyer_phone);
+
+    //generate receipt
+    strcpy(receipt_name,"receipt");
 
     while (1){
 
@@ -164,7 +178,7 @@ void checkout(struct PRODUCT **buyer_products, float balance){
         counter++;
 
     }
-    
+
     FILE *output;
     output = fopen(receipt_name, "w+");
     fprintf(output, "Thank you for your purchase today!\n--------------------------------------------------------------------\n");
@@ -177,8 +191,8 @@ void checkout(struct PRODUCT **buyer_products, float balance){
 
         fprintf(output, "Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage\n");
         fprintf(output, "%s     -      %i      -       %i      -      %.2f      -       %c",tracker->name, tracker->product_number, tracker->number_selected, tracker->price, tracker->flag_code);
-        
-        
+
+
         total_price += ((tracker->number_selected)*(tracker->price));
         tracker=tracker->next_product;
     }
@@ -200,16 +214,27 @@ void checkout(struct PRODUCT **buyer_products, float balance){
 
     fclose(output);
     printf("\nThank you for shopping with us! Your receipt has been outputted.\n\n");
-    
+
     //@SAFATANZEEM, please look here for commented code
-	//traverse list to update product inventory descriptions
-	/*tracker = (*buyer_products);
-	while(tracker!=NULL){
-		update_stock(tracker->product_number, tracker->number_selected, 0);
-		buyer_info(buyer_name, buyer_address, buyer_phone, tracker->product_number, tracker->number_selected, tracker->seller_id);
-		update_revenue(tracker->seller_id, (float)(tracker->number_selected)*(tracker->price));
-		tracker=tracker->next_product;
-	}*/
+    //traverse list to update product inventory descriptions
+    tracker = (*buyer_products);
+
+    while(tracker!=NULL){
+
+        float price = 0.0;
+        price = (tracker->number_selected)*(tracker->price);
+
+        //printf("%d", tracker->seller_id);
+        //printf("\n%s", tracker->name);
+
+        update_revenue(tracker->seller_id, price);
+
+        update_stock(tracker->product_number, tracker->number_selected, 0);
+
+        //buyer_info(buyer_name, buyer_addr, buyer_phone, tracker->product_number, tracker->number_selected, tracker->seller_id);
+
+        tracker=tracker->next_product;
+    }
     return;
 
 }
@@ -334,4 +359,5 @@ void add_cart(){
     return;
 
 }
+
 

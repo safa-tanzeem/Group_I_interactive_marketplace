@@ -56,3 +56,4 @@ float update_balance(float wallet_balance, float total_amt_in_cart){
 
     return wallet_balance;
 }
+

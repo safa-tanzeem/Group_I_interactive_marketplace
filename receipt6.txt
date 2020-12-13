@@ -1,0 +1,8 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+shampoo     -      10001      -       2      -      12.99      -       NProduct_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+chair     -      10004      -       2      -      40.99      -       N
+
+TOTAL COST OF PRODUCTS: $107.96
+Remaining funds: $892.04
