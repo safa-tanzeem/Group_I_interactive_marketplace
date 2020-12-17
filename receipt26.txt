@@ -1,8 +1,0 @@
-Thank you for your purchase today!
---------------------------------------------------------------------
-Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
-Milk     -      10003      -       2      -      7.99      -       NProduct_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
-bread     -      10025      -       1      -      2.99      -       N
-
-TOTAL COST OF PRODUCTS: $18.97
-Remaining funds: $31.03

@@ -1,8 +1,0 @@
-Thank you for your purchase today!
---------------------------------------------------------------------
-Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
-Milk     -      10003      -       1      -      7.99      -       NProduct_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
-Yogurt     -      10011      -       1      -      4.99      -       N
-
-TOTAL COST OF PRODUCTS: $12.98
-Remaining funds: $37.02

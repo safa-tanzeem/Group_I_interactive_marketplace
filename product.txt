@@ -1,1 +1,6 @@
-shampoo,beauty,10,10001,7,4.990000,150,0.450000
+shampoo and,Home and Garden,0,10006,34,56.000000,34,0.450000
+eggs and milk,Grocery,1,0,3,3.550000,12345,0.450000
+egg and,Grocery,1,10004,5,5.800000,45,0.760000
+baby powder,Health and Beauty,2,10006,34,5.990000,123,0.450000
+Sofa,Home and Garden,0,10001,6,999.989990,12345,0.450000
+Lamps,Home and Garden,0,10001,6,40.990002,12345,0.450000

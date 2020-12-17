@@ -1,8 +1,0 @@
-Thank you for your purchase today!
---------------------------------------------------------------------
-Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
-chair     -      10001      -       1      -      80.00      -       NProduct_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
-Mattress     -      10008      -       1      -      699.99      -       N
-
-TOTAL COST OF PRODUCTS: $779.99
-Remaining funds: $1220.01
