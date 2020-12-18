@@ -81,21 +81,6 @@ struct PRODUCT* display_product(){
     temp = new_product_head;
 
     choice = display_categories();
-    
-    printf("\nWould you like to sort products based on \n1. Ascending price\n2. Descending Price\nAny Other Integer: No sorting necessary ?:\n");
-    
-	do{
-	
-		output=scanf("%i", &sort_choice);
-		
-    }while(validate(output)!=OK);
-    
-    if(sort_choice== 1){
-    	sort_products_ascend(new_product_head);
-	}
-	else if(sort_choice== 2){
-    	sort_products_descend(new_product_head);
-	}
 
     printf("Name - Product Number - Price - Stock #\n----------------------------\n");
 
