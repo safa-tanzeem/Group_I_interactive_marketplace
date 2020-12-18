@@ -9,10 +9,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "file_scanner.h"
-#include "product.h"
-#include "buyer_functions.h"
-#include "buyer_wallet.h"
+#include "../include/scanner.h"
+#include "../include/seller.h"
+#include "../include/buyer_functions.h"
+#include "../include/buyer_wallet.h"
+#include "../include/common.h"
+//#include "../include/stock_update.h"
+//#include "../include/update_buyer_info.h"
+//#include "../include/seller_manager.h"
+
 
 /**
  * \brief This function diplays the categories of different products
@@ -23,17 +28,25 @@ int display_categories(){
 
     int choice = 100;
     int i = 0;
+    int valid =0;
+    int output;
     char** categories = get_categories();
 
     printf("\nPlease select the category you would like to shop in: \n");
-    while(!(choice>=1 && choice<=7)){
-
-        for(i; i<7; i++){
+    while(!(choice>=1 && choice<=7&&valid==1)){
+        
+		valid = 0; //reset if entry is valid or not
+        
+		for(i; i<7; i++){
             printf("%i. %s\n", i+1, categories[i]);
         }
 
-        scanf("%i", &choice);
-        i= 0;
+        output=scanf("%i", &choice);
+        if(validate(output)==OK){
+        	valid=1;
+		}
+        
+        i= 0; //reset counter
 
         printf("\n");
 
@@ -54,6 +67,8 @@ int display_categories(){
 struct PRODUCT* display_product(){
 
     int choice;
+    int sort_choice;
+    int output;
 
 
     struct PRODUCT *new_product_head; //declare new node
@@ -66,6 +81,21 @@ struct PRODUCT* display_product(){
     temp = new_product_head;
 
     choice = display_categories();
+    
+    printf("\nWould you like to sort products based on \n1. Ascending price\n2. Descending Price\nAny Other Integer: No sorting necessary ?:\n");
+    
+	do{
+	
+		output=scanf("%i", &sort_choice);
+		
+    }while(validate(output)!=OK);
+    
+    if(sort_choice== 1){
+    	sort_products_ascend(new_product_head);
+	}
+	else if(sort_choice== 2){
+    	sort_products_descend(new_product_head);
+	}
 
     printf("Name - Product Number - Price - Stock #\n----------------------------\n");
 
@@ -96,6 +126,9 @@ struct PRODUCT* display_product(){
 
 int receipt_exists(char *receipt_name){
 
+    if (receipt_name == NULL){
+    	return -1;
+	}
 
     strcat(receipt_name, ".txt");
     FILE *receipt = fopen(receipt_name, "r");
@@ -129,22 +162,22 @@ void checkout(struct PRODUCT **buyer_products, float balance){
     char receipt_def[20];
     char buyer_name[20];
     char buyer_addr [40];
-    int buyer_phone;
-    
-	//take buyer information
-	printf("\nBuyer Name: ");
-	scanf("%c", &temp);
-	scanf("%[^\n]", buyer_name);
-	
-	printf("\nBuyer Address: ");
-	scanf("%c", &temp);
-	scanf("%[^\n]", buyer_addr);
-	
-	printf("\nBuyer Phone: ");
-	scanf("%i", &buyer_phone);
-	
-	//generate receipt
-	strcpy(receipt_name,"receipt");
+    char buyer_phone[10];
+
+    //take buyer information
+    printf("\nBuyer Name: ");
+    scanf("%c", &temp);
+    scanf("%[^\n]", buyer_name);
+
+    printf("\nBuyer Address: ");
+    scanf("%c", &temp);
+    scanf("%[^\n]", buyer_addr);
+
+    printf("\nBuyer Phone: ");
+    scanf("%s", buyer_phone);
+
+    //generate receipt
+    strcpy(receipt_name,"receipt");
 
     while (1){
 
@@ -164,27 +197,27 @@ void checkout(struct PRODUCT **buyer_products, float balance){
         counter++;
 
     }
-    
+
     FILE *output;
     output = fopen(receipt_name, "w+");
     fprintf(output, "Thank you for your purchase today!\n--------------------------------------------------------------------\n");
-
+    fprintf(output, "\nProduct_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage\n");
     while(tracker!=NULL){
 
         if(tracker->flag_code!='Y'){
             tracker->flag_code = 'N';
         }
 
-        fprintf(output, "Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage\n");
-        fprintf(output, "%s     -      %i      -       %i      -      %.2f      -       %c",tracker->name, tracker->product_number, tracker->number_selected, tracker->price, tracker->flag_code);
         
-        
+        fprintf(output, "%s     -      %i      -       %i      -      %.2f      -       %c\n",tracker->name, tracker->product_number, tracker->number_selected, tracker->price, tracker->flag_code);
+
+
         total_price += ((tracker->number_selected)*(tracker->price));
         tracker=tracker->next_product;
     }
 
     balance = update_balance(balance, total_price);
-
+    
     if(balance==-2.0){
         fprintf(output, "NOT ENOUGH FUNDS TO COMPLETE PURCHASE!");
         printf("NOT ENOUGH FUNDS TO COMPLETE PURCHASE!");
@@ -200,16 +233,27 @@ void checkout(struct PRODUCT **buyer_products, float balance){
 
     fclose(output);
     printf("\nThank you for shopping with us! Your receipt has been outputted.\n\n");
-    
+
     //@SAFATANZEEM, please look here for commented code
-	//traverse list to update product inventory descriptions
-	/*tracker = (*buyer_products);
-	while(tracker!=NULL){
-		update_stock(tracker->product_number, tracker->number_selected, 0);
-		buyer_info(buyer_name, buyer_address, buyer_phone, tracker->product_number, tracker->number_selected, tracker->seller_id);
-		update_revenue(tracker->seller_id, (float)(tracker->number_selected)*(tracker->price));
-		tracker=tracker->next_product;
-	}*/
+    //traverse list to update product inventory descriptions
+    tracker = (*buyer_products);
+
+    while(tracker!=NULL){
+
+        float price = 0.0;
+        price = (tracker->number_selected)*(tracker->price);
+
+        //printf("%d", tracker->seller_id);
+        //printf("\n%s", tracker->name);
+
+        //update_revenue(tracker->seller_id, price);
+
+        //update_stock(tracker->product_number, tracker->number_selected, 0);
+
+        //buyer_info(buyer_name, buyer_addr, buyer_phone, tracker->product_number, tracker->number_selected, tracker->seller_id);
+
+        tracker=tracker->next_product;
+    }
     return;
 
 }
@@ -224,6 +268,7 @@ void add_cart(){
 
     int product_sel;
     float balance;
+    int output;
 
     balance = add_balance();
 
@@ -247,7 +292,10 @@ void add_cart(){
     while(1){
 
         printf("\nSelect products to add to cart. Enter product numbers.\nEnter 0 to end entries, 1 to see categories: \n");
-        scanf("%i",&product_sel);
+        
+		do{
+			output=scanf("%i",&product_sel);
+    	}while(validate(output)!=OK);
 
         if(product_sel==0){
             break;
@@ -301,7 +349,10 @@ void add_cart(){
     while(1){
 
         printf("\nPlease enter any discount codes you would like to enter: Enter 0 to exit: ");
-        scanf("%i", &dis_code);
+
+		do{
+			output=scanf("%i", &dis_code);
+    	}while(validate(output)!=OK);
 
         if(dis_code==0){
             break;
@@ -334,4 +385,5 @@ void add_cart(){
     return;
 
 }
+
 
