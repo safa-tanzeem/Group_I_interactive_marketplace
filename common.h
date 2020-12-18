@@ -18,8 +18,11 @@ enum error_codes_e {
 
   OK                    = 0,
   ERROR_WRONG_CATEGORY  = -1,
-  ERROR_WRONG_NAME      = -2
+  ERROR_WRONG_NAME      = -2,
+  ERROR_NULL_POINTER    = -3
 
 };
+
+int validate(int val);
 
 #endif /* COMMON_H_ */
