@@ -13,23 +13,7 @@
 #include "../include/buyer_wallet.h"
 #include "../include/buyer_functions.h"
 #include "../include/common.h"
-
-/**
- * \brief The functions brings the user to the buyer's perspective.
-*Allows the user to pick products to buy, then check them out
-*Other functions include adding funds to their wallets, and pay for products
-*/
-void buyerMenu(){
-
-    printf("\n---BUYER MENU---\n");
-    add_cart();
-
-    return;
-}
-
-void sellerMenu(){
-    printf("seller\n");
-}
+#include "../include/seller_menu.h"
 
 
 /**
@@ -63,11 +47,12 @@ do{
 
     switch(choice){
         case 1:
-            buyerMenu();
+            printf("\n---BUYER MENU---\n");
+    		add_cart();
             break;
 
         case 2:
-            sellerMenu();
+            seller_menu();
             break;
         
         case 3:
