@@ -1,8 +1,9 @@
-/*
+ /**
  * display_inventory.h
  *
  *  Created on: Dec. 6, 2020
- *      Author: sufian
+ *
+ * @author Sufian Ali Mohammad - sufianalimohammad@cmail.carleton.ca
  */
 
 #ifndef DISPLAY_INVENTORY_H_
