@@ -8,13 +8,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "seller_manager.h"
-#include "display_inventory.h"
-#include "inventory_creation.h"
-#include "common.h"
-#include "seller.h"
 #include <unistd.h>
-#include "stock_update.h"
+#include "../include/seller_manager.h"
+#include "../include/display_inventory.h"
+#include "../include/inventory_creation.h"
+#include "../include/common.h"
+#include "../include/seller.h"
+#include "../include/stock_update.h"
 
 /*\brief This function displays and allows the seller to access all seller files
  * This function displays all the available features to the seller and also allows him
