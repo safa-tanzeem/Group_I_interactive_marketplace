@@ -29,7 +29,7 @@ int update_file(product_t *head_ref){
     product_t *current = head_ref;
 
     FILE *product_file;
-    product_file = fopen("/Users/safatanzeem/Desktop/Demo/product.txt", "w");
+    product_file = fopen("..\\data\\product.txt", "w");
 
     if (product_file == NULL){
         fprintf(stderr, "\n Error! File can't be opened");
