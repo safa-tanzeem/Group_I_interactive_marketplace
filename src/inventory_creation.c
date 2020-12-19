@@ -29,14 +29,13 @@ enum category_choice_e {
 /**\brief This function adds new product's product number in seller database
  * @param[in] head contains the head linked list where the product is to be added
  * @param[in] prod_num product number that needs to be added
- * return 0 on success
+ * @return 0 on success
  */
 
 int add_product_to_seller(seller_prod_num_t **head, int prod_num){
 
     seller_prod_num_t *new = (seller_prod_num_t*) malloc(sizeof(seller_prod_num_t));
     seller_prod_num_t *last = *head;
-    //printf("%d", head->value);
 
     new->value = prod_num;
     new->next = NULL;
@@ -58,7 +57,7 @@ int add_product_to_seller(seller_prod_num_t **head, int prod_num){
 
 /**\brief This function saves newly added product to inventory
  * @param[in] save_product contains all information about newly added product
- * return 0 on success, -3 on error
+ * @return 0 on success, -3 on error
  */
 
 int save_to_product_file(product_t *save_product){
@@ -97,12 +96,12 @@ int save_to_product_file(product_t *save_product){
  * This product takes structure Seller as an input which contains all the
  * information about seller and adds a new product in the inventory
  * @param[in] seller contains all information about seller
- * return 0 on success, -1 if wrong cateogary is chosen
- * return -4 if number of digits for product number is  not equal to 5
- * return -2 if the length of name is greater than 20
- * return -6 if stock for product added is 0
- * return -5 if price of product added is 0
- * return -3 if input parameter for function is NULL
+ * @return 0 on success, -1 if wrong cateogary is chosen
+ * @return -4 if number of digits for product number is  not equal to 5
+ * @return -2 if the length of name is greater than 20
+ * @return -6 if stock for product added is 0
+ * @return -5 if price of product added is 0
+ * @return -3 if input parameter for function is NULL
  */
 
 int add_new_product(struct SELLER *seller){
@@ -211,9 +210,9 @@ int add_new_product(struct SELLER *seller){
 
     /* Adding product name*/
     char prod_name[NAME_MAX_LENGTH];
-    char temp = '\0';
+    //char temp = '\0';
     printf("Product name(Maximum 20 characters):");
-    scanf("%c", &temp);
+    //scanf("%c", &temp);
     scanf("%[^\n]", prod_name);
     strcpy(new_product->name, prod_name);
 
