@@ -12,6 +12,8 @@
 #include "../include/common.h"
 
 
+/**\brief this function empties stdin if EOF is reached
+ */
 void empty_stdin(void){
 
     int c = getchar();

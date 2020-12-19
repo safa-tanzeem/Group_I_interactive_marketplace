@@ -38,7 +38,7 @@ typedef struct SELLER{
     float total_revenue;
     struct SELLER_PROD_NUM *products_number;
     struct SOLD_PRODUCT *products_sold;
-}seller_t;
+} seller_t;
 
 typedef struct SOLD_PRODUCT{
     char buyer_name[20];
@@ -48,7 +48,7 @@ typedef struct SOLD_PRODUCT{
     int product_number;
     int quantity;
     struct SOLD_PRODUCT* next_sold_product;
-}sold_product_t;
+} sold_product_t;
 
 
 
