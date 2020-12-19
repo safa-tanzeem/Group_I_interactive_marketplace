@@ -21,7 +21,7 @@
 #include "../include/scanner.h"
 #include "../include/display_inventory.h"
 
-int display_inventory(seller_t *seller){
+int display_inventory(SELLER *seller){
     product_t* products_head = get_products();
     /* get the list of product ids of a particular seller */
     seller_prod_num_t *seller_products_head = seller->products_number;
