@@ -69,7 +69,7 @@ int save_to_product_file(product_t *save_product){
     }
 
     FILE *product_file;
-    product_file = fopen("/Users/safatanzeem/Desktop/Demo/product.txt","a+");
+    product_file = fopen("..\\data\\product.txt","a+");
 
     if(product_file == NULL){
         fprintf(stderr,"\n Error! File can't be opened");
