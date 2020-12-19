@@ -143,7 +143,7 @@ int seller_sub_menu(struct SELLER* seller){
 }
 
 /*This function displays different features for seller
- * when he enters seller marketplace
+ * when the user enters seller marketplace
  * @return 0 on success
  **/
 

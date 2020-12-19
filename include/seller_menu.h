@@ -8,6 +8,8 @@
 #ifndef SELLER_MENU_H_
 #define SELLER_MENU_H_
 
+
+#include "../include/seller.h"
 int seller_sub_menu(struct SELLER* seller);
 int seller_menu();
 
