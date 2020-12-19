@@ -205,7 +205,6 @@ int seller_menu(){
             if(seller == NULL){
                 break;
             }else{
-                //printf("You have successfully signed in\n\n");
                 seller_sub_menu(seller);
             }
             break;
