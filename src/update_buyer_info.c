@@ -10,12 +10,12 @@
 #include<string.h>
 #include<stdlib.h>
 #include <unistd.h>
-#include "seller.h"
-#include "inventory_creation.h"
-#include "scanner.h"
-#include "seller_manager.h"
-#include "update_buyer_info.h"
-#include "common.h"
+#include "../include/seller.h"
+#include "../include/inventory_creation.h"
+#include "../include/scanner.h"
+#include "../include/seller_manager.h"
+#include "../include/update_buyer_info.h"
+#include "../include/common.h"
 
 
 /*\brief This function updates buyer infor for seller after each sucessful transaction
