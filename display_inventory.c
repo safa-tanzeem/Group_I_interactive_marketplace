@@ -8,9 +8,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "seller.h"
-#include "scanner.h"
-#include "display_inventory.h"
+#include "../include/seller.h"
+#include "../include/scanner.h"
+#include "../include/display_inventory.h"
 
 int display_inventory(seller_t *seller)
 {
