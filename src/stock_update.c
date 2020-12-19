@@ -100,7 +100,7 @@ int calculate_new_stock(int prev_stock,int quantity, int type){
  * @param[in] quantity Quantity of the product that needs to be updated
  * @param[in] type "1" if stock is being added, "0" if stock is being subtracted
  */
-void update_stock(int prod_num, int quantity, int type){
+int update_stock(int prod_num, int quantity, int type){
 
     if(prod_num <= 0 || quantity < 0 || type <0){
         printf("Error! product_number, quantity and type can't be less than zero");
@@ -138,7 +138,7 @@ void update_stock(int prod_num, int quantity, int type){
                     flag = 0;
                 }else{
                     printf("Product not found, wrong product number entered");
-                    return;
+                    return OK;
                 }
 
             }else{
@@ -149,4 +149,5 @@ void update_stock(int prod_num, int quantity, int type){
         }
     }
     update_file(head_ref);
+    return OK;
 }

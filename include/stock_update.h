@@ -8,7 +8,7 @@
 #ifndef STOCK_UPDATE_H_
 #define STOCK_UPDATE_H_
 
-void update_stock(int prod_num, int quantity, int type);
+int update_stock(int prod_num, int quantity, int type);
 
 
 

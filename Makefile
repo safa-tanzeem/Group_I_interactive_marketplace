@@ -5,6 +5,8 @@ INCLUDE=-I include
 bin_folder := $(shell mkdir -p bin)
 build_folder := $(shell mkdir -p build)
 
+all: runmarketplace
+
 #TARGETS TO GENERATE THE OBJECT FILES
 buyer_functions.o: src/buyer_functions.c 
 	$(CC) -g $(INCLUDE) -c src/buyer_functions.c -o build/buyer_functions.o
@@ -52,6 +54,8 @@ launchmarketplace:
 #TARGET TO COMPILE/RUN MARKETPLACE
 runmarketplace: marketplace launchmarketplace
 
+
+
 #CLEAN COMMANDS
 clean: 
-	rm -f bin/* build/*
+	rm -f bin/*.exe build/*.o
