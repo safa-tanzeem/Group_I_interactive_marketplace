@@ -29,7 +29,9 @@ enum error_codes_e {
   ERROR_INVALID_INPUT           = -7,
   ERROR_INVALID_ADDRESS         = -8,
   ERROR_INVALID_PHONE_NUMBER    = -9,
-  ERROR_VALUE_ZERO              = -9
+  ERROR_VALUE_ZERO              = -10,
+  ERROR_INVALID_COMPARISON = -11,
+  ERROR_INVALID_TYPE = -12
 
 
 };
