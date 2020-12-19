@@ -8,7 +8,7 @@
 #ifndef SELLER_H_
 #define SELLER_H_
 
-#include "common.h"
+#include "../include/common.h"
 
 typedef struct PRODUCT{
   char name[NAME_MAX_LENGTH];
