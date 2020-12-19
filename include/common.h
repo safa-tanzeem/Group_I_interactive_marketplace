@@ -30,8 +30,8 @@ enum error_codes_e {
   ERROR_INVALID_ADDRESS         = -8,
   ERROR_INVALID_PHONE_NUMBER    = -9,
   ERROR_VALUE_ZERO              = -10,
-  ERROR_INVALID_COMPARISON = -11,
-  ERROR_INVALID_TYPE = -12
+  ERROR_INVALID_COMPARISON      = -11,
+  ERROR_INVALID_TYPE            = -12
 
 
 };
