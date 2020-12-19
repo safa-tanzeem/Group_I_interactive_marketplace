@@ -9,10 +9,10 @@
 #include<string.h>
 #include<stdlib.h>
 #include "inventory_creation.h"
-#include "scanner.h"
-#include "common.h"
-#include "seller_manager.h"
-#include "seller.h"
+#include "../include/scanner.h"
+#include "../include/common.h"
+#include "../include/seller_manager.h"
+#include "../include/seller.h"
 
 
 enum category_choice_e {

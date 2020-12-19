@@ -8,7 +8,7 @@
 #ifndef INVENTORY_CREATION_H_
 #define INVENTORY_CREATION_H_
 
-#include "seller.h"
+#include "../include/seller.h"
 
 int add_new_product(struct SELLER *seller);
 
