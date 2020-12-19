@@ -18,7 +18,7 @@
 #include "../include/common.h"
 
 
-/*\brief This function updates buyer infor for seller after each sucessful transaction
+/*\brief This function updates buyer information for seller after each successful transaction
  * @param[in] buyer_name Name of the buyer who bought the product
  * @param[in] address Address of the buyer
  * @param[in] phone_num Phone number of buyer
