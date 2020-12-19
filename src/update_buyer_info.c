@@ -25,12 +25,12 @@
  * @param[in] prod_num Product number of the product that buyer bought
  * @param[in] quantity_sold number of items of that product sold
  * @param[in] seller_id Seller id of the seller who added this product
- * return 0 on success
- * return -3 is file is unable to open
- * return -2 if name of buyer is more than 20 characters
- * return -9 if phone number of buyer is more than 10 characters
- * return -8 if address of buyer is more than 40 characters
- * return -9 if the value is equal to zero
+ * @return 0 on success
+ * @return -3 is file is unable to open
+ * @return -2 if name of buyer is more than 20 characters
+ * @return -9 if phone number of buyer is more than 10 characters
+ * @return -8 if address of buyer is more than 40 characters
+ * @return -10 if the value is equal to zero
  *
  **/
 
