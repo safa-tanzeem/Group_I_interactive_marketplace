@@ -10,15 +10,21 @@
 #include<stdlib.h>
 #include "../include/seller.h"
 #include "../include/stock_update.h"
-#include"../include/scanner.h"
+#include "../include/scanner.h"
+#include "../include/common.h"
+
 
 /*\brief This function updates the product inventory when stock is added
  * @param[in] head_ref points to the head of updated inventory linked list
- * return 0 on success, -3 on error
- *
+ * @return 0 on success, -3 on error
  **/
 
 int update_file(product_t *head_ref){
+
+    if(head_ref == NULL){
+        printf("Error with product file\n");
+        return ERROR_NULL_POINTER;
+    }
 
     product_t *current = head_ref;
 
@@ -46,8 +52,24 @@ int update_file(product_t *head_ref){
     return 0;
 }
 
+/*\brief This function calculates new stock
+ * This function calculates new stock each time a product is bought and
+ * everytime seller updates stock of existing product
+ * @param[in] prev_stock previous stock in the inventory
+ * @param[in] quantity Quantity of the product that needs to be updated
+ * @param[in] type "1" if stock is being added, "0" if stock is being subtracted
+ * @return[out] new_stock_val New stock value calculated
+ * @return -10 if values of input parameters is less than zero
+ * @return -11 if purchased stock is greater than stock available
+ * @return -12 if any other value of type is called
+ * */
 int calculate_new_stock(int prev_stock,int quantity, int type){
     int new_stock_val = 0;
+
+    if(prev_stock < 0 || quantity < 0 || type <0){
+        printf("Error! prev_stock, quantity and type can't be less than zero");
+        return ERROR_VALUE_ZERO;
+    }
 
     switch (type){
 
@@ -57,7 +79,7 @@ int calculate_new_stock(int prev_stock,int quantity, int type){
         }else{
             printf(
                     "Purchased number of products are greater than products available");
-            return -1;
+            return ERROR_INVALID_COMPARISON;
         }
         break;
     case 1:
@@ -65,7 +87,7 @@ int calculate_new_stock(int prev_stock,int quantity, int type){
         break;
     default:
         printf("invalid entry of type\n");
-        return -2;
+        return ERROR_INVALID_TYPE;
     }
 
     return new_stock_val;
@@ -74,11 +96,16 @@ int calculate_new_stock(int prev_stock,int quantity, int type){
 /*
  * \brief This function updates stock in the inventory when a purchase is made
  * or if seller wants to add new stock
- * param[in] prod_num Product number of the product whose stock needs to be updated
- * param[in] quantity Quantity of the product that needs to be updated
- * param[in] type "1" if stock is being added, "0" if stock is being subtracted
+ * @param[in] prod_num Product number of the product whose stock needs to be updated
+ * @param[in] quantity Quantity of the product that needs to be updated
+ * @param[in] type "1" if stock is being added, "0" if stock is being subtracted
  */
 void update_stock(int prod_num, int quantity, int type){
+
+    if(prod_num <= 0 || quantity < 0 || type <0){
+        printf("Error! product_number, quantity and type can't be less than zero");
+        return ERROR_VALUE_ZERO;
+    }
 
     int prev_stock = 0; //previous stock
     int flag = 1;
@@ -90,15 +117,13 @@ void update_stock(int prod_num, int quantity, int type){
     while (flag != 0){
 
         if (prod_num == current_product->product_number){
-            //stock updation
-            //printf("entering equation\n");
+            /*stock updation*/
             prev_stock = current_product->stock;
 
             current_product->stock = calculate_new_stock(prev_stock,quantity,type);
-            //printf("Product stock has been updated!");
 
             if (previous_product == NULL){
-                //beginning of the list need to change head
+                /*beginning of the list need to change head*/
                 head_ref = current_product;
             }
 
@@ -106,11 +131,10 @@ void update_stock(int prod_num, int quantity, int type){
 
         }else{
             if (current_product->next_product == NULL){
-                //end of the list reached
+                /*end of the list reached*/
                 if (prod_num == current_product->product_number){
-                    //Check if product number is at the last
+                    /*Check if product number is at the last*/
                     current_product->stock = calculate_new_stock(prev_stock,quantity,type);
-                    //printf("Product stock has been updated!");
                     flag = 0;
                 }else{
                     printf("Product not found, wrong product number entered");
@@ -118,12 +142,11 @@ void update_stock(int prod_num, int quantity, int type){
                 }
 
             }else{
-                //Traverse the linked list
+                /*Traverse the linked list*/
                 previous_product = current_product;
                 current_product = current_product->next_product;
             }
         }
     }
-    //print_list(head_ref);
     update_file(head_ref);
 }
