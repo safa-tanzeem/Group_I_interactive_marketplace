@@ -8,9 +8,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "seller.h"
-#include "stock_update.h"
-#include"scanner.h"
+#include "../include/seller.h"
+#include "../include/stock_update.h"
+#include"../include/scanner.h"
 
 /*\brief This function updates the product inventory when stock is added
  * @param[in] head_ref points to the head of updated inventory linked list
