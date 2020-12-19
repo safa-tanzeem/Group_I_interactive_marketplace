@@ -14,9 +14,9 @@
 #include "../include/buyer_functions.h"
 #include "../include/buyer_wallet.h"
 #include "../include/common.h"
-//#include "../include/stock_update.h"
-//#include "../include/update_buyer_info.h"
-//#include "../include/seller_manager.h"
+#include "../include/stock_update.h"
+#include "../include/update_buyer_info.h"
+#include "../include/seller_manager.h"
 
 
 /**
@@ -67,7 +67,6 @@ int display_categories(){
 struct PRODUCT* display_product(){
 
     int choice;
-    int sort_choice;
     int output;
 
 
@@ -82,21 +81,6 @@ struct PRODUCT* display_product(){
 
     choice = display_categories();
     
-    printf("\nWould you like to sort products based on \n1. Ascending price\n2. Descending Price\nAny Other Integer: No sorting necessary ?:\n");
-    
-	do{
-	
-		output=scanf("%i", &sort_choice);
-		
-    }while(validate(output)!=OK);
-    
-    if(sort_choice== 1){
-    	sort_products_ascend(new_product_head);
-	}
-	else if(sort_choice== 2){
-    	sort_products_descend(new_product_head);
-	}
-
     printf("Name - Product Number - Price - Stock - Discount Code\n-------------------------------------\n");
 
     while(temp!= NULL){
@@ -167,18 +151,18 @@ void checkout(struct PRODUCT **buyer_products, float balance){
 
     //take buyer information
     printf("\nBuyer Name: ");
-    scanf("%c", &temp);
+    //scanf("%c", &temp);
     scanf("%[^\n]", buyer_name);
 
     printf("\nBuyer Address: ");
-    scanf("%c", &temp);
+    //scanf("%c", &temp);
     scanf("%[^\n]", buyer_addr);
 
     printf("\nBuyer Phone: ");
     scanf("%s", buyer_phone);
 
     //generate receipt
-    strcpy(receipt_name,"receipt");
+    strcpy(receipt_name,"..//data//receipt");
 
     while (1){
 
@@ -187,7 +171,7 @@ void checkout(struct PRODUCT **buyer_products, float balance){
             break;
         }
 
-        strcpy(receipt_def, "receipt");
+        strcpy(receipt_def, "..//data//receipt");
 
         sprintf(counter_str, "%d", counter);
 
@@ -235,7 +219,6 @@ void checkout(struct PRODUCT **buyer_products, float balance){
     fclose(output);
     printf("\nThank you for shopping with us! Your receipt has been outputted.\n\n");
 
-    //@SAFATANZEEM, please look here for commented code
     //traverse list to update product inventory descriptions
     tracker = (*buyer_products);
 
@@ -247,11 +230,11 @@ void checkout(struct PRODUCT **buyer_products, float balance){
         //printf("%d", tracker->seller_id);
         //printf("\n%s", tracker->name);
 
-        //update_revenue(tracker->seller_id, price);
+        update_revenue(tracker->seller_id, price);
 
-        //update_stock(tracker->product_number, tracker->number_selected, 0);
+        update_stock(tracker->product_number, tracker->number_selected, 0);
 
-        //buyer_info(buyer_name, buyer_addr, buyer_phone, tracker->product_number, tracker->number_selected, tracker->seller_id);
+        buyer_info(buyer_name, buyer_addr, buyer_phone, tracker->product_number, tracker->number_selected, tracker->seller_id);
 
         tracker=tracker->next_product;
     }
