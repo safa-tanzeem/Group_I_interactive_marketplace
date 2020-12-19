@@ -35,12 +35,19 @@ float add_balance(){
  * @param[in] wallet_balance is the balance added in the wallet at the start of transaction
  * @param[in] total_amt_in_cart is the amount needed for purchase
  * @return -2 if insufficient balance in wallet,
+ * @return -10 if wallet balance or amount in cart  is less than 0
  * @return wallet_balance if transaction is sucessful
  * @return update_balance if insufficient balance in the account and user to want to add new balance
  */
 float update_balance(float wallet_balance, float total_amt_in_cart){
     int output = 0;
     int flag = 0;
+
+    if(wallet_balance < 0 || total_amt_in_cart <0){
+        printf("Error! Wallet balance and total amount in cart can't be equal to zero\n");
+        return ERROR_VALUE_ZERO;
+    }
+
     if (wallet_balance < total_amt_in_cart){
         printf("Transaction cannot be completed, Wallet Balance insufficient! \n");
         printf("Enter 1: To add balance \nEnter 0: To exit \n");
