@@ -21,10 +21,10 @@
 #include "../include/scanner.h"
 #include "../include/display_inventory.h"
 
-int display_inventory(SELLER *seller){
+int display_inventory(seller_t *SELLER){
     product_t* products_head = get_products();
     /* get the list of product ids of a particular seller */
-    seller_prod_num_t *seller_products_head = seller->products_number;
+    seller_prod_num_t *seller_products_head = SELLER->products_number;
     seller_prod_num_t *current_product = seller_products_head;
     /* if the current_product returns NULL then the seller has no products in his inventory */
     if(current_product == NULL){
