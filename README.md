@@ -7,7 +7,7 @@ language, C. Our software must address all the needs of both the sellers and buy
 # Authors
 * Safa Tanzeem - 
 * Muhammad Salman -   
-* Kaveh - 
+* Kaveh Rouhandeh- 
 * Sufian Ali Mohammad - sufianalimohammad@cmail.carleton.ca
 # Installation
 Installtion steps are mentioned here. (link)
