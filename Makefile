@@ -41,10 +41,13 @@ stock_update.o: src/stock_update.c
 update_buyer_info.o: src/update_buyer_info.c
 	$(CC) -g $(INCLUDE) -c src/update_buyer_info.c -o build/update_buyer_info.o
 
+display_sold_products.o: src/display_sold_products.c
+	$(CC) -g $(INCLUDE) -c src/display_sold_products.c -o build/display_sold_products.o
+
 
 #TARGET TO GENERATE THE EXECUTABLE OF THE PROGRAM (and the tests) - LINK OBJECT FILES
-marketplace: buyer_functions.o scanner.o main.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
-	$(CC) -g -o bin/MARKETPLACE.exe build/buyer_functions.o build/scanner.o build/main.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
+marketplace: display_sold_products.o buyer_functions.o scanner.o main.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
+	$(CC) -g -o bin/MARKETPLACE.exe build/display_sold_products.o build/buyer_functions.o build/scanner.o build/main.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
 
 
 #TARGET TO RUN MARKETPLACE
