@@ -117,4 +117,4 @@ run_test_update_buyer_info: test_update_buyer_info launch_test_update_buyer_info
 
 #CLEAN COMMANDS
 clean: 
-	rm -f bin/*.exe build/* test/bin/*.exe test/build/*
+	rm -f bin/*.exe build/*.o test/bin/*.exe test/build/*.o
