@@ -34,6 +34,88 @@ char **get_categories(){
     return categories;
 }
 
+
+/**
+ * \brief This function sorts the linked list according to descending price
+ * @param[in] list_products The list of products read in from the text file
+ */
+
+void sort_products_descend(struct PRODUCT *list_products){
+	
+	struct PRODUCT *temp; //declare new node
+    temp = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
+	temp = (list_products);
+	
+	struct PRODUCT *tracker; //declare new node
+    tracker = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
+    
+    struct PRODUCT *new_list; //declare new node
+    new_list = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
+    
+    
+    float temp_price;
+	
+	//sort original linked list
+	while(temp->next_product!=NULL){
+		
+		tracker = temp->next_product;
+		new_list = temp;
+		
+		while(tracker!=NULL){
+			if((new_list->price)<(tracker->price)){
+				new_list = tracker;
+			}
+			tracker=tracker->next_product;
+		}
+		
+        temp_price = temp->price;
+        temp->price = new_list->price;
+        new_list->price = temp_price;
+        
+        temp = temp->next_product;
+	}
+}
+
+/**
+ * \brief This function sorts the linked list according to ascending price
+ * @param[in] list_products The list of products read in from the text file
+ */
+void sort_products_ascend(struct PRODUCT *list_products){
+	
+	struct PRODUCT *temp; //declare new node
+    temp = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
+	temp = (list_products);
+	
+	struct PRODUCT *tracker; //declare new node
+    tracker = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
+    
+    struct PRODUCT *new_list; //declare new node
+    new_list = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
+    
+    
+    float temp_price;
+	
+	//sort original linked list
+	while(temp->next_product!=NULL){
+		
+		tracker = temp->next_product;
+		new_list = temp;
+		
+		while(tracker!=NULL){
+			if((new_list->price)>(tracker->price)){
+				new_list = tracker;
+			}
+			tracker=tracker->next_product;
+		}
+		
+        temp_price = temp->price;
+        temp->price = new_list->price;
+        new_list->price = temp_price;
+        
+        temp = temp->next_product;
+	}
+}
+
 /**
  * \brief This function returns a list of products read in from a text file, storing product parameters
  * @return head Head of list containing products

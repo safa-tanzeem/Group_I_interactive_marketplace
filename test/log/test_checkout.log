@@ -1,0 +1,11 @@
+Function call with valid list of products, and a fund value of  greater than $0.
+---Valid Buyer Product List----Receipt Outputted---
+
+Function call with an empty list, meaning no selected products and valid funds.
+---TEST FAILED---NO PRODUCTS SELECTED
+
+Function call with valid list of products, and a fund value equal to $0.
+---TEST FAILED---PRODUCTS SELECTED--EMPTY FUNDS--FAIL RECEIPT OUTPUTTED
+
+Function call with valid list of products, and a fund value less than required. 
+---TEST FAILED---PRODUCTS SELECTED--INSUFFICIENT FUNDS--FAIL RECEIPT OUTPUTTED
