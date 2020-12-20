@@ -199,6 +199,7 @@ struct SELLER * seller_log_in(int seller_id, char * pass)
                     strcpy(tmp_product->buyer_shipping_address, data);
 
                     data = strtok(NULL, ",");
+                    data = strtok(data, "\n");
                     strcpy(tmp_product->phone_number, data);
 
 
