@@ -10,6 +10,8 @@
 #include<stdlib.h>
 #include "../include/seller.h"
 #include "../include/scanner.h"
+#include "../include/seller_manager.h"
+
 /**
  * \brief This function returns a double array of category names
  * @return categories double array with category names
@@ -38,8 +40,11 @@ char **get_categories(){
  */
 struct PRODUCT* get_products(){
 
+    char file_path[100] = SELLER_ROOT_PATH;
+    strcat(file_path, "product.txt");
+
     FILE *input;
-    input = fopen("..//data//product.txt", "r");
+    input = fopen(file_path, "r");
 
     char line[1024];
     char *data;

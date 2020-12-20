@@ -41,7 +41,7 @@ int add_product_to_seller(seller_prod_num_t **head, int prod_num){
     new->next = NULL;
 
     if (*head == NULL){
-        printf("Entering head\n");
+        //printf("Entering head\n");
         *head = new;
         return OK;
     }
@@ -68,8 +68,12 @@ int save_to_product_file(product_t *save_product){
         return ERROR_NULL_POINTER;
     }
 
+    /*Generating path*/
+    char file_path[100] = SELLER_ROOT_PATH;
+    strcat(file_path, "product.txt");
+
     FILE *product_file;
-    product_file = fopen("..\\data\\product.txt","a+");
+    product_file = fopen(file_path,"a+");
 
     if(product_file == NULL){
         fprintf(stderr,"\n Error! File can't be opened");
@@ -271,7 +275,7 @@ int add_new_product(struct SELLER *seller){
     output = 0;
     while(1){
         printf("Confirm Seller Id: ");
-        scanf("%d", &new_product->seller_id);
+        output = scanf("%d", &new_product->seller_id);
         if( validate(output) == OK){
             break;
         }

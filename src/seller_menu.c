@@ -22,27 +22,24 @@
  * @param[in] *seller Pointer to a structure seller which has all the information of seller in it.
  * @return 0 on success, -3 if the pointer is NULL
  * */
-int seller_sub_menu(struct SELLER* seller){
+int seller_sub_menu(struct SELLER *seller){
 
-    if(seller == NULL){
+    if (seller == NULL){
         printf("Error while fetching seller information\n");
         return ERROR_NULL_POINTER;
     }
 
-    int choice        = 0;
-    int count         = 0;
+    int choice = 0;
+    int count = 0;
     int attempts_left = 0;
 
     while (count < MAX_ATTEMPTS){
         int prod_num = 0;
         int quantity = 0;
-        int flag     = 1;
-        int output   = 0;
+        int flag = 1;
+        int output = 0;
 
-
-
-
-        while(1){
+        while (1){
 
             printf("\nWhat would you like to do today?\n"
                     "1: Add new product\n"
@@ -54,12 +51,11 @@ int seller_sub_menu(struct SELLER* seller){
             //scanf("%d", &choice);
 
             output = scanf("%d", &choice);
-            if( validate(output) == OK){
+            if (validate(output) == OK){
                 break;
             };
 
         }
-
 
         switch (choice) {
 
@@ -78,14 +74,15 @@ int seller_sub_menu(struct SELLER* seller){
 
             /* Input the value of product number and check the validation*/
             output = 0;
-            while(1){
+            while (1){
                 printf("Please enter the Product Number of the product "
                         "whose stock you want to change: ");
                 output = scanf("%d", &prod_num);
-                if( validate(output) == OK){
+                if (validate(output) == OK){
                     break;
                 }
-            };
+            }
+            ;
 
             seller_prod_num_t *current_product = seller->products_number;
 
@@ -105,11 +102,11 @@ int seller_sub_menu(struct SELLER* seller){
 
             /* Input the quantity seller wants to add and check the validation*/
             output = 0;
-            while(1){
+            while (1){
                 printf(
                         "Please enter the quantity of products you want to add: ");
                 output = scanf("%d", &quantity);
-                if( validate(output) == OK){
+                if (validate(output) == OK){
                     break;
                 }
             }
@@ -149,11 +146,10 @@ int seller_sub_menu(struct SELLER* seller){
 
 int seller_menu(){
 
-
-    int choice          = 0;
-    int count           = 0;
-    int attempts_left   = 0;
-    int output          = 0;
+    int choice = 0;
+    int count = 0;
+    int attempts_left = 0;
+    int output = 0;
 
     printf("---SELLER MENU---.\n\n");
 
@@ -163,8 +159,7 @@ int seller_menu(){
         char name[20];
         char temp;
 
-
-        while(1){
+        while (1){
             printf("\nPlease select from the following choices:\n"
                     "1. Already have an account? Enter 1 to Sign in\n"
                     "2. Want to create a new account? Enter 2 to sign up\n"
@@ -172,13 +167,11 @@ int seller_menu(){
                     "Enter choice:");
 
             output = scanf("%d", &choice);
-            if( validate(output) == OK){
+            if (validate(output) == OK){
                 break;
             }
 
-
         }
-
 
         switch (choice) {
 
@@ -192,17 +185,24 @@ int seller_menu(){
 
             printf("\nYou have chosen to Sign in\n");
 
-            struct SELLER* seller = (struct SELLER*)malloc(sizeof(struct SELLER));
+            struct SELLER *seller = (struct SELLER*) malloc(
+                    sizeof(struct SELLER));
 
-            printf("Please enter your seller_id:");
-            scanf("%d",&seller_id);
+            output = 0;
+            while (1){
+                printf("Please enter your seller_id:");
+                output = scanf("%d", &seller_id);
+                if (validate(output) == OK){
+                    break;
+                }
+            }
 
             printf("Please enter your password:");
-            scanf("%s",password);
+            scanf("%s", password);
 
-            seller = seller_log_in(seller_id ,password);
+            seller = seller_log_in(seller_id, password);
 
-            if(seller == NULL){
+            if (seller == NULL){
                 break;
             }else{
                 seller_sub_menu(seller);
@@ -210,19 +210,24 @@ int seller_menu(){
             break;
 
         case 2:
-
-            printf(" You have chosen to sign up\n");
-            printf("Please enter seller_id:");
-            scanf("%d", &seller_id);
+            output = 0;
+            while (1){
+                printf(" You have chosen to sign up\n");
+                printf("Please enter seller_id:");
+                output = scanf("%d", &seller_id);
+                if (validate(output) == OK){
+                    break;
+                }
+            }
 
             printf("Please enter name:");
-            scanf("%c", &temp);
-            scanf("%[^\n]",name);
+            //scanf("%c", &temp);
+            scanf(" %[^\n]", name);
 
             printf("Please enter password:");
             scanf("%s", password);
 
-            seller_sign_up(seller_id,name,password);
+            seller_sign_up(seller_id, name, password);
             break;
 
         default:

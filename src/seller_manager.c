@@ -104,7 +104,7 @@ int update_revenue(int seller_id, float price)
             remove(file_path);
             if( rename(tmp_file_path, file_path)==0)
             {
-                printf("Total revenue successfully updated for seller id: %d\n",seller_id);
+                //printf("Total revenue successfully updated for seller id: %d\n",seller_id);
                 return SUCCEED_PROCESS ;
             }
             else
@@ -344,7 +344,7 @@ int seller_log_out(struct SELLER * seller)
                             sold_product->buyer_shipping_address,
                             sold_product->phone_number);
                     sold_product = sold_product->next_sold_product;
-                    fputs("\n", file);
+                    // fputs("\n", file);
                 }
                 fclose(file);
                 printf("You have logged out successfully\n");

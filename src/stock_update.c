@@ -12,6 +12,7 @@
 #include "../include/stock_update.h"
 #include "../include/scanner.h"
 #include "../include/common.h"
+#include "../include/seller_manager.h"
 
 
 /*\brief This function updates the product inventory when stock is added
@@ -28,8 +29,11 @@ int update_file(product_t *head_ref){
 
     product_t *current = head_ref;
 
+    char file_path[100] = SELLER_ROOT_PATH;
+    strcat(file_path, "product.txt");
+
     FILE *product_file;
-    product_file = fopen("..\\data\\product.txt", "w");
+    product_file = fopen(file_path, "w");
 
     if (product_file == NULL){
         fprintf(stderr, "\n Error! File can't be opened");

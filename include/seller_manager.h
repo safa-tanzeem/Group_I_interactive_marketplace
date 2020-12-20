@@ -8,7 +8,7 @@
 #ifndef SELLER_MANAGER_H_INCLUDED
 #define SELLER_MANAGER_H_INCLUDED
 
-#define SELLER_ROOT_PATH                                            "..\\data\\"
+#define SELLER_ROOT_PATH                                            "../data/"
 
 #define FETCH_SELLER_NAME_FORMAT                                    "%s"
 #define FETCH_SELLER_PASS_FORMAT                                    "%s"

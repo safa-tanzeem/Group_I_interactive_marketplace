@@ -27,7 +27,6 @@
 int display_categories(){
 
     int choice = 100;
-    int i = 0;
     int valid =0;
     int output;
     char** categories = get_categories();
@@ -37,7 +36,7 @@ int display_categories(){
         
 		valid = 0; //reset if entry is valid or not
         
-		for(i; i<7; i++){
+		for(int i = 0; i<7; i++){
             printf("%i. %s\n", i+1, categories[i]);
         }
 
@@ -46,8 +45,6 @@ int display_categories(){
         	valid=1;
 		}
         
-        i= 0; //reset counter
-
         printf("\n");
 
     }
@@ -155,7 +152,7 @@ void checkout(struct PRODUCT **buyer_products, float balance){
     scanf("%[^\n]", buyer_name);
 
     printf("\nBuyer Address: ");
-    //scanf("%c", &temp);
+    scanf("%c", &temp);
     scanf("%[^\n]", buyer_addr);
 
     printf("\nBuyer Phone: ");
@@ -363,7 +360,7 @@ void add_cart(){
         }
     }
 
-    user_list=tracker;
+    //user_list=tracker;
 
     checkout(&user_list, balance);
     return;
