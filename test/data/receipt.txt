@@ -1,0 +1,19 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+chair     -      10001      -       1      -      80.00      -       N
+Coffee Table     -      10002      -       1      -      149.99      -       N
+Milk     -      10003      -       1      -      7.99      -       N
+Shampoo     -      10004      -       1      -      8.99      -       N
+Soap     -      10005      -       1      -      5.99      -       N
+Lamp     -      10006      -       1      -      20.99      -       N
+Mattress     -      10008      -       1      -      699.99      -       N
+Jeans     -      10009      -       1      -      20.99      -       N
+Cycle     -      10010      -       1      -      249.99      -       N
+Yogurt     -      10011      -       1      -      4.99      -       N
+Dining Table     -      10012      -       1      -      149.99      -       N
+
+
+TOTAL COST OF PRODUCTS: $1399.90
+Remaining funds: $998600.12
