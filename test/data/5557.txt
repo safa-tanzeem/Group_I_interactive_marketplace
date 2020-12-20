@@ -1,8 +1,0 @@
-10011,1,Muhammad Salman,,2435
-10012,1,Muhammad Salman,,2435
-10470.951172
-10012,1,Muhammad,2124,124
-10011,1,Muhammad,3245,345
-10012,1,Muhammad,3245,345
-10011,1,Muhammad,345,345
-10012,1,Muhammad,345,345
