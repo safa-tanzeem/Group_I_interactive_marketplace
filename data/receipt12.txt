@@ -1,0 +1,9 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Dining table     -      10014      -       1      -      212.39      -       Y
+
+
+TOTAL COST OF PRODUCTS: $212.39
+Remaining funds: $7.61

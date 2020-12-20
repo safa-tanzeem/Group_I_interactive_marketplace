@@ -1,0 +1,9 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Google home     -      10021      -       1      -      120.99      -       N
+
+
+TOTAL COST OF PRODUCTS: $120.99
+Remaining funds: $79.01

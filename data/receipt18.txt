@@ -1,0 +1,9 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Jeans     -      10008      -       1      -      30.99      -       N
+
+
+TOTAL COST OF PRODUCTS: $30.99
+Remaining funds: $69.01

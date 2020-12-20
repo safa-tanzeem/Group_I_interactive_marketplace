@@ -1,0 +1,9 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Tea bags     -      10028      -       2      -      8.99      -       N
+
+
+TOTAL COST OF PRODUCTS: $17.98
+Remaining funds: $2.02

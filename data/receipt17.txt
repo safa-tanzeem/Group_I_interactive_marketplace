@@ -1,0 +1,6 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Mouse     -      10025      -       4      -      40.99      -       N
+NOT ENOUGH FUNDS TO COMPLETE PURCHASE!

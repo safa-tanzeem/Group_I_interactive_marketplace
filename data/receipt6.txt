@@ -1,0 +1,9 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+chair     -      10003      -       1      -      80.00      -       N
+
+
+TOTAL COST OF PRODUCTS: $80.00
+Remaining funds: $30.00

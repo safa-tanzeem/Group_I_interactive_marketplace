@@ -1,0 +1,9 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+Milk     -      10003      -       3      -      2.99      -       N
+
+
+TOTAL COST OF PRODUCTS: $8.97
+Remaining funds: $41.03
