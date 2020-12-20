@@ -9,7 +9,8 @@
 #define SCANNER_H_
 
 char **get_categories();
-
+void sort_products_descend(struct PRODUCT *list_products);
+void sort_products_ascend(struct PRODUCT *list_products);
 struct PRODUCT* get_products();
 
 
