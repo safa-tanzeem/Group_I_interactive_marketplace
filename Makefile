@@ -8,6 +8,9 @@ build_folder := $(shell mkdir -p build)
 test_bin_folder := $(shell mkdir -p test/bin)
 build_folder := $(shell mkdir -p test/build)
 
+#EASY RUN
+all: runmarketplace
+
 #TARGETS TO GENERATE THE OBJECT FILES
 buyer_functions.o: src/buyer_functions.c 
 	$(CC) -g $(INCLUDE) -c src/buyer_functions.c -o build/buyer_functions.o
@@ -114,4 +117,4 @@ run_test_update_buyer_info: test_update_buyer_info launch_test_update_buyer_info
 
 #CLEAN COMMANDS
 clean: 
-	rm -f bin/* build/* test/bin/* test/build/*
+	rm -f bin/*.exe build/* test/bin/*.exe test/build/*
