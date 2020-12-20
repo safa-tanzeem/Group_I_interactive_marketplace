@@ -65,7 +65,7 @@ struct PRODUCT* display_product(){
 
     int choice;
     int output;
-
+    int sort_choice;
 
     struct PRODUCT *new_product_head; //declare new node
     new_product_head = (struct PRODUCT*)malloc(sizeof(struct PRODUCT));
