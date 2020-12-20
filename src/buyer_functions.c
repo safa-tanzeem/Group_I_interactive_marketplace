@@ -163,7 +163,6 @@ void checkout(struct PRODUCT **buyer_products, float balance){
 
     //take buyer information
     printf("\nBuyer Name: ");
-    //scanf("%c", &temp);
     scanf("%[^\n]", buyer_name);
 
     printf("\nBuyer Address: ");
@@ -238,9 +237,6 @@ void checkout(struct PRODUCT **buyer_products, float balance){
 
         float price = 0.0;
         price = (tracker->number_selected)*(tracker->price);
-
-        //printf("%d", tracker->seller_id);
-        //printf("\n%s", tracker->name);
 
         update_revenue(tracker->seller_id, price);
 
@@ -374,8 +370,6 @@ void add_cart(){
             tracker=tracker->next_product;
         }
     }
-
-    //user_list=tracker;
 
     checkout(&user_list, balance);
     return;
