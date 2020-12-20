@@ -9,6 +9,6 @@
 #ifndef DISPLAY_INVENTORY_H_
 #define DISPLAY_INVENTORY_H_
 
-int display_inventory(SELLER *seller);
+int display_inventory(struct SELLER *seller);
 
 #endif /* DISPLAY_INVENTORY_H_ */

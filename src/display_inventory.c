@@ -7,9 +7,12 @@
  * about the products being sold by the seller. The function reads from "scanner.h" to get the
  * products information and "seller.h" to get the product numbers associated with the seller
  *
- * @param[in] seller_products_head points to the head of structure defined in "seller.h" to get
+ * @param[in] seller is a pointer to the structure SELLER in seller.h
+ *
+ * @param[in] seller_products_head points to the head of structure PRODUCT_NUM defined in "seller.h" to get
  * the product numbers associated to the products being sold by the seller
- * @param[in] product_head points to the head of the structure defined in "scanner.h" to get
+ *
+ * @param[in] products_head points to the head of the structure defined in "scanner.h" to get
  * the products information
  *
  */
@@ -21,7 +24,7 @@
 #include "../include/scanner.h"
 #include "../include/display_inventory.h"
 
-int display_inventory(SELLER *seller){
+int display_inventory(struct SELLER *seller){
     product_t* products_head = get_products();
     /* get the list of product ids of a particular seller */
     seller_prod_num_t *seller_products_head = seller->products_number;
