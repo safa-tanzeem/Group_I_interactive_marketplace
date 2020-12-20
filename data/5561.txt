@@ -1,0 +1,4 @@
+pass6
+seller6
+0.000000
+END
