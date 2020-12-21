@@ -10,6 +10,4 @@
 
 #define PATH_FILE                   "../log/test_update_buyer_info.log"
 
-void main();
-
 #endif /* TEST_INCLUDE_TEST_UPDATE_BUYER_INFO_H_ */

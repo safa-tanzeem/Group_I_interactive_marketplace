@@ -9,7 +9,6 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "../../include/seller.h"
 #include "../../include/update_buyer_info.h"
 #include "../include/test_update_buyer_info.h"
 
@@ -37,11 +36,12 @@
  * at the end of the seller_id.txt file
  */
 
-void main(){
+int main(){
 
-    char buyer_name[20];
-    char address[40];
-    char phone_num[10];
+
+    char buyer_name[100];
+    char address[100];
+    char phone_num[100];
     int prod_num = 0;
     int quantity_sold = 0;
     int seller_id = 0;
@@ -122,21 +122,22 @@ void main(){
     fprintf(output,"Function call with seller_id equal to 0.\n");
     fprintf(output, "---TEST FAILED----Invalid seller_id! seller id can't be less than or equal to 0\n\n--\n\n");
 
-
     /*Checking pre/post-condition*/
     strcpy(buyer_name,"Buyer test");
     strcpy(address,"Address test");
     strcpy(phone_num,"123456");
     prod_num        = 10007;
     quantity_sold   = 5;
-    seller_id       = 5550;
+    seller_id       = 5560;
 
     buyer_info(buyer_name,address,phone_num,prod_num,quantity_sold,seller_id);
     fprintf(output,"Function call with valid list of input parameters.\n");
     fprintf(output, "---Valid input parameters-");
-    fprintf(output, "---Buyer's information appended in the text file with name:5550.txt---\n\n");
+    fprintf(output, "---Buyer's information appended in the text file with name:5560.txt---\n\n");
 
     fclose(output);
+
+    return 0;
 
 }
 

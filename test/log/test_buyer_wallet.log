@@ -1,0 +1,12 @@
+Function call with wallet balance = -1(negative) .
+---TEST FAILED----Invalid input! Wallet balance can't be negative--
+
+Function call with amount in cart = -10 (negative) .
+---TEST FAILED----Invalid input! Amount in cart can't be negative--
+
+Function call with valid input parameters,but wallet balance is less than amount in cart.Function will ask if you want to add balance or not,Add more than 10CAD for the transaction to be successful
+---TEST PASSED--
+
+Function call with valid input parameters,and wallet balance greater than amount in cart
+---TEST PASSED--Transaction is successful--
+

@@ -1,0 +1,6 @@
+Function call with NULL as input parameter.
+---TEST FAILED----Invalid Input--
+
+Input Parameter is valid.
+---TEST FAILED---Stock is less than or equal to zero--
+

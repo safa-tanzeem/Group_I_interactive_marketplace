@@ -73,6 +73,16 @@ test_receipt_exists.o: test/src/test_receipt_exists.c
 	
 test_update_buyer_info.o: test/src/test_update_buyer_info.c
 	$(CC) -g $(INCLUDE_TEST) -c test/src/test_update_buyer_info.c -o test/build/test_update_buyer_info.o
+	
+test_stock_update.o: test/src/test_stock_update.c
+	$(CC) -g $(INCLUDE_TEST) -c test/src/test_stock_update.c -o test/build/test_stock_update.o
+	
+test_buyer_wallet.o: test/src/test_buyer_wallet.c
+	$(CC) -g $(INCLUDE_TEST) -c test/src/test_buyer_wallet.c -o test/build/test_buyer_wallet.o
+	
+test_inventory_creation.o: test/src/test_inventory_creation.c
+	$(CC) -g $(INCLUDE_TEST) -c test/src/test_inventory_creation.c -o test/build/test_inventory_creation.o
+	
 
 test_seller_log_in.o: test/src/test_seller_log_in.c
 	$(CC) -g $(INCLUDE_TEST) -c test/src/test_seller_log_in.c -o test/build/test_seller_log_in.o
@@ -108,11 +118,11 @@ test_receipt_exists: test_receipt_exists.o buyer_functions.o scanner.o buyer_wal
 launch_test_receipt_exists:
 		cd ./test/bin; ./TEST_RECEIPT_EXISTS.exe
 		
-test_update_buyer_info: test_update_buyer_info.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
-	$(CC) -g -o test/bin/TEST_UPDATE_BUYER_INFO.exe test/build/test_update_buyer_info.o build/buyer_functions.o build/scanner.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
+test_update_buyer_info: test_update_buyer_info.o update_buyer_info.o
+	$(CC) -g -o test/bin/TEST_UPDATE_BUYER_INFO.exe test/build/test_update_buyer_info.o build/update_buyer_info.o
 
 launch_test_update_buyer_info:
-		cd ./test/bin; ./TEST_UPDATE_BUYER_INFO.exe
+		cd test/bin; ./TEST_UPDATE_BUYER_INFO.exe
 	
 test_seller_log_in: test_seller_log_in.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
 	$(CC) -g -o test/bin/TEST_SELLER_LOG_IN.exe test/build/test_seller_log_in.o build/buyer_functions.o build/scanner.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
@@ -125,7 +135,25 @@ test_update_revenue: test_update_revenue.o buyer_functions.o scanner.o buyer_wal
 
 launch_test_update_revenue:
 		cd ./test/bin; ./TEST_UPDATE_REVENUE.exe
+		
+test_stock_update: test_stock_update.o stock_update.o scanner.o
+	$(CC) -g -o test/bin/TEST_STOCK_UPDATE.exe test/build/test_stock_update.o build/stock_update.o build/scanner.o
 
+launch_test_stock_update:
+		cd test/bin; ./TEST_STOCK_UPDATE.exe
+		
+test_buyer_wallet: test_buyer_wallet.o buyer_wallet.o common.o
+	$(CC) -g -o test/bin/TEST_BUYER_WALLET.exe test/build/test_buyer_wallet.o build/buyer_wallet.o build/common.o
+
+launch_test_buyer_wallet:
+		cd test/bin; ./TEST_BUYER_WALLET.exe
+		
+test_inventory_creation: test_inventory_creation.o inventory_creation.o scanner.o seller_manager.o common.o
+	$(CC) -g -o test/bin/TEST_INVENTORY_CREATION.exe test/build/test_inventory_creation.o build/inventory_creation.o build/scanner.o build/seller_manager.o build/common.o
+
+launch_test_inventory_creation:
+		cd test/bin; ./TEST_INVENTORY_CREATION.exe
+		
 #RUN AND LAUNCH TESTS
 run_test_checkout: test_checkout launch_test_checkout
 run_get_categories: test_get_categories launch_get_categories
@@ -134,6 +162,9 @@ run_test_receipt_exists: test_receipt_exists launch_test_receipt_exists
 run_test_update_buyer_info: test_update_buyer_info launch_test_update_buyer_info
 run_test_seller_log_in: test_seller_log_in launch_test_seller_log_in
 run_test_update_revenue: test_update_revenue launch_test_update_revenue
+run_test_stock_update: test_stock_update launch_test_stock_update
+run_test_buyer_wallet: test_buyer_wallet launch_test_buyer_wallet
+run_test_inventory_creation: test_inventory_creation launch_test_inventory_creation
 
 #CLEAN COMMANDS
 clean: 
