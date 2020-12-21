@@ -16,7 +16,6 @@ The User manual can be found here: [User Manual](https://github.com/safa-tanzeem
 # Developer Manual
 The Developer Manual can be found here: [Developer Manual](https://github.com/safa-tanzeem/Group_I_interactive_marketplace/wiki/Developer-Manual)
 # File Structure
-`Folder PATH listing
 │   .gitignore
 │   Makefile
 │
@@ -194,7 +193,7 @@ The Developer Manual can be found here: [Developer Manual](https://github.com/sa
             test_display_sold_products.c
             test_get_categories.c
             test_get_products.c
-            test_receipt_exists.c`
+            test_receipt_exists.c
             
 # Acknowledgements
 We thank Prof. Cristina Ruiz Martin in guiding us to develop this software.
