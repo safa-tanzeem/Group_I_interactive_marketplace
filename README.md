@@ -10,7 +10,7 @@ language, C. Our software must address all the needs of both the sellers and buy
 * Kaveh Rouhandeh - KAVEHROUHANDEH@cmail.carleton.ca
 * Sufian Ali Mohammad - sufianalimohammad@cmail.carleton.ca
 # Usage
-Installtion steps are mentioned here. [Installation Instructions](https://github.com/safa-tanzeem/Group_I_interactive_marketplace/wiki/User-Manual#installation-instructions)
+Instructions for installing and running the program can be found here are mentioned here. [Installation Instructions](https://github.com/safa-tanzeem/Group_I_interactive_marketplace/wiki/User-Manual)
 # User Manual
 The User manual can be found here: [User Manual](https://github.com/safa-tanzeem/Group_I_interactive_marketplace/wiki/User-Manual)
 # Developer Manual
