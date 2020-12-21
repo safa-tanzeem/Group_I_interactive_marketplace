@@ -5,16 +5,16 @@ different kinds of products to a wide range of customers using highly popular so
 language, C. Our software must address all the needs of both the sellers and buyers for it to be efficient.
 
 # Authors
-* Safa Tanzeem - 
+* Safa Tanzeem - safatanzeem@cmail.carleton.ca
 * Muhammad Salman -   
-* Kaveh Rouhandeh- 
+* Kaveh Rouhandeh - KAVEHROUHANDEH@cmail.carleton.ca
 * Sufian Ali Mohammad - sufianalimohammad@cmail.carleton.ca
 # Usage
-Installtion steps are mentioned here. (link)
+Installtion steps are mentioned here. [Installation Instructions](https://github.com/safa-tanzeem/Group_I_interactive_marketplace/wiki/User-Manual#installation-instructions)
 # User Manual
-The User manual can be found here: (link)
+The User manual can be found here: [User Manual](https://github.com/safa-tanzeem/Group_I_interactive_marketplace/wiki/User-Manual)
 # Developer Manual
-The Developer Manyal can be found here. (link)
+The Developer Manual can be found here: [Developer Manual](https://github.com/safa-tanzeem/Group_I_interactive_marketplace/wiki/Developer-Manual)
 # File Structure
 [Insert tree here]
 # Acknowledgements
