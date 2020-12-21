@@ -199,6 +199,7 @@ struct SELLER * seller_log_in(int seller_id, char * pass)
                     strcpy(tmp_product->buyer_shipping_address, data);
 
                     data = strtok(NULL, ",");
+                    data = strtok(data, "\n");
                     strcpy(tmp_product->phone_number, data);
 
 
@@ -335,8 +336,16 @@ int seller_log_out(struct SELLER * seller)
 
                 /**< store product list */
                 struct SOLD_PRODUCT* sold_product = seller->products_sold;
+                int tmp_counter = 0;
+
                 while (sold_product != NULL)
                 {
+                    if (tmp_counter != 0){
+                        fputs("\n", file);
+                    }
+                    else {
+                        tmp_counter++;
+                    }
                     fprintf(file, SOLD_PRODUCT_INFO_FORMAT,
                             sold_product->product_number,
                             sold_product->quantity,
@@ -465,4 +474,92 @@ int seller_sign_up(int seller_id, char * name, char * pass )
         printf("Sign up failed, this seller id: %d already exist, Please try again.\n",seller_id);
         return DUPLICATE_DATA ;
     }
+}
+int seller_change_password(struct SELLER **seller)
+{
+    /**< check validation of input  */
+    if(*seller == NULL)
+    {
+        printf("Seller information is invalid, Unable to change seller password\n");
+        return INVALID_INPUT ;
+    }
+    if((*seller)->name[0] == '\0' || (*seller)->pass[0] == '\0' || (*seller)->seller_id == 0 )
+    {
+        printf("Seller information is invalid, Unable to change seller password\n");
+        return INVALID_INPUT ;
+    }
+    char old_pass[20]="";
+    char new_pass[20]="";
+
+    /**< Continue the loop until the seller exits or user enter the correct password*/
+    while(1)
+    {
+        /**< seller verification for changing password by ask password again */
+        printf("Please Enter old password: ");
+        scanf("%s", old_pass);
+        if(strcmp(old_pass, (*seller)->pass)!= 0)
+        {
+            printf("Old password is wrong\nEnter 1 to continue or others for exit:");
+            int user_input = 0 ;
+            scanf("%d", &user_input);
+            if(user_input != 1)
+            {
+                printf("You have not changed your password\n");
+                return UNSUCCEED_PROCESS ;
+            }
+        }
+        else
+        {
+            break ;
+        }
+
+    }
+
+    printf("Please Enter new password: ");
+    scanf("%s", new_pass);
+    strcpy((*seller)->pass, new_pass);
+    printf("You have changed your password successfully\n");
+    return SUCCEED_PROCESS;
+}
+int seller_change_name(struct SELLER **seller)
+{
+    /**< check validation of input  */
+    if(*seller == NULL)
+    {
+        printf("Seller information is invalid, Unable to change seller name\n");
+        return INVALID_INPUT ;
+    }
+    if( (*seller)->name[0] == '\0' || (*seller)->pass[0] == '\0' || (*seller)->seller_id == 0 )
+    {
+        printf("Seller information is invalid, Unable to change seller name\n");
+        return INVALID_INPUT ;
+    }
+    char _pass[20]="";
+    /**< Continue the loop until the seller exits or user enter the correct password*/
+    while(1)
+    {
+        /**< seller verification for changing name by ask password again */
+        printf("Please enter your password: ");
+        scanf("%s", _pass);
+        if(strcmp(_pass, (*seller)->pass)!= 0)
+        {
+            printf("Password is wrong\nEnter 1 to continue or others for exit:");
+            int user_input = 0 ;
+            scanf("%d", &user_input);
+            if(user_input != 1)
+            {
+                printf("You have not changed your name\n");
+                return UNSUCCEED_PROCESS ;
+            }
+        }
+        else
+        {
+            break;
+        }
+
+    }
+    printf("Please Enter new name: ");
+    scanf("%s", (*seller)->name);
+    printf("You have changed your name successfully\n");
+    return SUCCEED_PROCESS;
 }

@@ -103,11 +103,13 @@ int calculate_new_stock(int prev_stock,int quantity, int type){
  * @param[in] prod_num Product number of the product whose stock needs to be updated
  * @param[in] quantity Quantity of the product that needs to be updated
  * @param[in] type "1" if stock is being added, "0" if stock is being subtracted
+ * @return 0 on success, -10 if input parameters are not entered correctly
  */
 int update_stock(int prod_num, int quantity, int type){
 
     if(prod_num <= 0 || quantity < 0 || type <0){
-        printf("Error! product_number, quantity and type can't be less than zero");
+        printf("Error! product_number can't be equal to zero; Quantity and Type "
+                "can't be less than or equal to zero\n");
         return ERROR_VALUE_ZERO;
     }
 
