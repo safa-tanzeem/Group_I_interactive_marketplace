@@ -1,0 +1,48 @@
+Thank you for your purchase today!
+--------------------------------------------------------------------
+
+Product_Name, Product_Number, Product_Quantity, Price_Per_Unit, Discount_Percentage
+shampoo     -      10001      -       1      -      4.99      -       N
+Tomato     -      123      -       1      -      2.00      -       N
+Phone     -      7      -       1      -      500.00      -       N
+Phone     -      41      -       1      -      50.00      -       N
+Potato     -      42      -       1      -      4.00      -       N
+Potato     -      21      -       1      -      4.00      -       N
+milk     -      45      -       1      -      4.00      -       N
+milk     -      12      -       1      -      5.00      -       N
+milk     -      1234      -       1      -      88.00      -       N
+Lamp     -      32      -       1      -      32.00      -       N
+Lamp     -      111      -       1      -      32.00      -       N
+chair     -      10002      -       1      -      80.00      -       N
+Coffee Table     -      10001      -       1      -      99.99      -       N
+Milk     -      10003      -       1      -      2.99      -       N
+Shampoo     -      10004      -       1      -      5.99      -       N
+Soap     -      10005      -       1      -      2.99      -       N
+Lamp     -      10006      -       1      -      49.99      -       N
+Mattress     -      10007      -       1      -      599.99      -       N
+Jeans     -      10008      -       1      -      30.99      -       N
+Cycle     -      10009      -       1      -      299.99      -       N
+Yogurt     -      10010      -       1      -      4.99      -       N
+Vitamins     -      10011      -       1      -      8.99      -       N
+Bread     -      10012      -       1      -      2.99      -       N
+Nail polish     -      10013      -       1      -      8.99      -       N
+Dining table     -      10014      -       1      -      235.99      -       N
+Speaker     -      10015      -       1      -      199.99      -       N
+Jam     -      10016      -       1      -      6.99      -       N
+Oil     -      10017      -       1      -      8.99      -       N
+Powder     -      10018      -       1      -      6.99      -       N
+Hub caps     -      10019      -       1      -      8.99      -       N
+Mobile phone     -      10020      -       1      -      599.99      -       N
+Google home     -      10021      -       1      -      120.99      -       N
+Refrigerator     -      10022      -       1      -      699.99      -       N
+Sugar     -      10023      -       1      -      5.99      -       N
+Skates     -      10024      -       1      -      99.99      -       N
+Mouse     -      10025      -       1      -      40.99      -       N
+Chips     -      10026      -       1      -      4.99      -       N
+Sandals     -      10027      -       1      -      29.99      -       N
+Tea bags     -      10028      -       1      -      8.99      -       N
+Salt     -      10029      -       1      -      8.99      -       N
+Coke     -      10030      -       1      -      2.99      -       N
+Oat meal     -      10031      -       1      -      5.99      -       N
+Pepsi     -      10032      -       1      -      2.99      -       N
+NOT ENOUGH FUNDS TO COMPLETE PURCHASE!

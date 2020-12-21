@@ -80,25 +80,4 @@ int show_revenue(struct SELLER* seller);
  * \@return   1 (SUCCEED_PROCESS) if function finish its task correctly
  */
 int update_revenue(int seller_id, float price);
-/** \brief this function will change password of current seller
- *  \@param[in]  an instance of SELLER structure
- *
- * \@return  the output is depends on result_code.h
- * \@return  -3 (INVALID_INPUT)  if each of the inputs has an invalid value
- * \@return  -4 (UNSUCCEED_PROCESS) if process failed because of an unpredicted problem
- * \@return   1 (SUCCEED_PROCESS) if function finish its task correctly
- *
- */
-int seller_change_password(struct SELLER **seller);
-
-
-/** \brief this function will change name of current seller
- *  \@param[in]  an instance of SELLER structure
- *
- * \@return  the output is depends on result_code.h
- * \@return  -3 (INVALID_INPUT)  if each of the inputs has an invalid value
- * \@return  -4 (UNSUCCEED_PROCESS) if process failed because of an unpredicted problem
- * \@return   1 (SUCCEED_PROCESS) if function finish its task correctly
- */
-int seller_change_name(struct SELLER ** seller);
 #endif // SELLER_MANAGER_H_INCLUDED
