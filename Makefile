@@ -45,11 +45,15 @@ stock_update.o: src/stock_update.c
 update_buyer_info.o: src/update_buyer_info.c
 	$(CC) -g $(INCLUDE) -c src/update_buyer_info.c -o build/update_buyer_info.o
 
+update_buyer_info.o: src/update_buyer_info.c
+	$(CC) -g $(INCLUDE) -c src/update_buyer_info.c -o build/update_buyer_info.o
+
+display_sold_products.o: src/display_sold_products.c
+	$(CC) -g $(INCLUDE) -c src/display_sold_products.c -o build/display_sold_products.o
 
 #TARGET TO GENERATE THE EXECUTABLE OF THE PROGRAM (and the tests) - LINK OBJECT FILES
-marketplace: buyer_functions.o scanner.o main.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
-	$(CC) -g -o bin/MARKETPLACE.exe build/buyer_functions.o build/scanner.o build/main.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
-
+marketplace: display_sold_products.o buyer_functions.o scanner.o main.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
+	$(CC) -g -o bin/MARKETPLACE.exe build/display_sold_products.o build/buyer_functions.o build/scanner.o build/main.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
 
 #TARGET TO RUN MARKETPLACE
 launchmarketplace:
@@ -89,6 +93,13 @@ test_seller_log_in.o: test/src/test_seller_log_in.c
 
 test_update_revenue.o: test/src/test_update_revenue.c
 	$(CC) -g $(INCLUDE_TEST) -c test/src/test_update_revenue.c -o test/build/test_update_revenue.o
+
+test_display_sold_products.o: test/src/test_display_sold_products.c
+	$(CC) -g $(INCLUDE_TEST) -c test/src/test_display_sold_products.c -o test/build/test_display_sold_products.o
+
+test_display_inventory.o: test/src/test_display_inventory.c
+	$(CC) -g $(INCLUDE_TEST) -c test/src/test_display_inventory.c -o test/build/test_display_inventory.o
+
 
 #TEST EXECUTABLES
 test_checkout: test_checkout.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
@@ -153,7 +164,19 @@ test_inventory_creation: test_inventory_creation.o inventory_creation.o scanner.
 
 launch_test_inventory_creation:
 		cd test/bin; ./TEST_INVENTORY_CREATION.exe
-		
+
+test_display_sold_products: test_display_sold_products.o display_sold_products.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
+	$(CC) -g -o test/bin/TEST_DISPLAY_SOLD_PRODUCTS.exe test/build/test_display_sold_products.o build/display_sold_products.o build/buyer_functions.o build/scanner.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
+
+launch_test_display_sold_products:
+		cd ./test/bin; ./TEST_DISPLAY_SOLD_PRODUCTS.exe
+
+test_display_inventory: test_display_inventory.o display_sold_products.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
+	$(CC) -g -o test/bin/TEST_DISPLAY_INVENTORY.exe test/build/test_display_inventory.o build/display_sold_products.o build/buyer_functions.o build/scanner.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
+
+launch_test_display_inventory:
+		cd ./test/bin; ./TEST_DISPLAY_INVENTORY.exe
+
 #RUN AND LAUNCH TESTS
 run_test_checkout: test_checkout launch_test_checkout
 run_get_categories: test_get_categories launch_get_categories
@@ -165,6 +188,8 @@ run_test_update_revenue: test_update_revenue launch_test_update_revenue
 run_test_stock_update: test_stock_update launch_test_stock_update
 run_test_buyer_wallet: test_buyer_wallet launch_test_buyer_wallet
 run_test_inventory_creation: test_inventory_creation launch_test_inventory_creation
+run_test_display_sold_products: test_display_sold_products launch_test_display_sold_products
+run_test_display_inventory: test_display_inventory launch_test_display_inventory
 
 #CLEAN COMMANDS
 clean: 
