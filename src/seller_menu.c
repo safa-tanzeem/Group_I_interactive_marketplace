@@ -46,6 +46,8 @@ int seller_sub_menu(struct SELLER *seller){
                     "2. Update stock of existing product\n"
                     "3. View Revenue\n"
                     "4. View Inventory\n"
+                    "6. Change your password\n"
+                    "7. Change your name\n"
                     "0. Logout\n"
                     "Enter Choice:");
             //scanf("%d", &choice);
@@ -123,6 +125,16 @@ int seller_sub_menu(struct SELLER *seller){
         case 4:
             printf("You have chosen to view Inventory\n\n");
             display_inventory(seller);
+            break;
+
+        case 6:
+            printf("You have chosen to change your password\n\n");
+            seller_change_password(&seller);
+            break;
+
+        case 7:
+            printf("You have chosen to change your name\n\n");
+            seller_change_name(&seller);
             break;
 
         default:
