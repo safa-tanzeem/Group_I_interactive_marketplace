@@ -15,6 +15,7 @@
 #include "../include/common.h"
 #include "../include/seller.h"
 #include "../include/stock_update.h"
+#include "../include/display_sold_products.h"
 
 /*\brief This function displays and allows the seller to access all seller files
  * This function displays all the available features to the seller and also allows him
@@ -46,11 +47,11 @@ int seller_sub_menu(struct SELLER *seller){
                     "2. Update stock of existing product\n"
                     "3. View Revenue\n"
                     "4. View Inventory\n"
+                    "5. View List of Products Sold\n"
                     "6. Change your password\n"
                     "7. Change your name\n"
                     "0. Logout\n"
                     "Enter Choice:");
-            //scanf("%d", &choice);
 
             output = scanf("%d", &choice);
             if (validate(output) == OK){
@@ -84,7 +85,6 @@ int seller_sub_menu(struct SELLER *seller){
                     break;
                 }
             }
-            ;
 
             seller_prod_num_t *current_product = seller->products_number;
 
@@ -96,7 +96,6 @@ int seller_sub_menu(struct SELLER *seller){
                     if (current_product->next == NULL){
                         printf("The product doesn't exist in your inventory\n");
                         return seller_sub_menu(seller);
-                        //flag = 0;
                     }
                     current_product = current_product->next;
                 }
@@ -119,13 +118,16 @@ int seller_sub_menu(struct SELLER *seller){
         case 3:
             printf("You have chosen to View Revenue\n\n");
             show_revenue(seller);
-
             break;
 
         case 4:
             printf("You have chosen to view Inventory\n\n");
             display_inventory(seller);
             break;
+        case 5:
+             printf("You have chosen to view sold products\n\n");
+             display_sold_products(seller);
+             break;
 
         case 6:
             printf("You have chosen to change your password\n\n");
