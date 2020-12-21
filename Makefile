@@ -74,6 +74,12 @@ test_receipt_exists.o: test/src/test_receipt_exists.c
 test_update_buyer_info.o: test/src/test_update_buyer_info.c
 	$(CC) -g $(INCLUDE_TEST) -c test/src/test_update_buyer_info.c -o test/build/test_update_buyer_info.o
 
+test_seller_log_in.o: test/src/test_seller_log_in.c
+	$(CC) -g $(INCLUDE_TEST) -c test/src/test_seller_log_in.c -o test/build/test_seller_log_in.o
+
+test_update_revenue.o: test/src/test_update_revenue.c
+	$(CC) -g $(INCLUDE_TEST) -c test/src/test_update_revenue.c -o test/build/test_update_revenue.o
+
 #TEST EXECUTABLES
 test_checkout: test_checkout.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
 	$(CC) -g -o test/bin/TEST_CHECKOUT.exe test/build/test_checkout.o build/buyer_functions.o build/scanner.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
@@ -107,13 +113,27 @@ test_update_buyer_info: test_update_buyer_info.o buyer_functions.o scanner.o buy
 
 launch_test_update_buyer_info:
 		cd ./test/bin; ./TEST_UPDATE_BUYER_INFO.exe
-		
+	
+test_seller_log_in: test_seller_log_in.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
+	$(CC) -g -o test/bin/TEST_SELLER_LOG_IN.exe test/build/test_seller_log_in.o build/buyer_functions.o build/scanner.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
+
+launch_test_seller_log_in:
+		cd ./test/bin; ./TEST_SELLER_LOG_IN.exe
+
+test_update_revenue: test_update_revenue.o buyer_functions.o scanner.o buyer_wallet.o common.o display_inventory.o inventory_creation.o seller_manager.o seller_menu.o stock_update.o update_buyer_info.o
+	$(CC) -g -o test/bin/TEST_UPDATE_REVENUE.exe test/build/test_update_revenue.o build/buyer_functions.o build/scanner.o build/buyer_wallet.o build/common.o build/display_inventory.o build/inventory_creation.o build/seller_manager.o build/seller_menu.o build/stock_update.o build/update_buyer_info.o
+
+launch_test_update_revenue:
+		cd ./test/bin; ./TEST_UPDATE_REVENUE.exe
+
 #RUN AND LAUNCH TESTS
 run_test_checkout: test_checkout launch_test_checkout
 run_get_categories: test_get_categories launch_get_categories
 run_get_products: test_get_products launch_get_products
 run_test_receipt_exists: test_receipt_exists launch_test_receipt_exists
 run_test_update_buyer_info: test_update_buyer_info launch_test_update_buyer_info
+run_test_seller_log_in: test_seller_log_in launch_test_seller_log_in
+run_test_update_revenue: test_update_revenue launch_test_update_revenue
 
 #CLEAN COMMANDS
 clean: 
