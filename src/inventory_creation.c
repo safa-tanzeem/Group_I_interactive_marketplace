@@ -101,7 +101,7 @@ int save_to_product_file(product_t *save_product){
  * information about seller and adds a new product in the inventory
  * @param[in] seller contains all information about seller
  * @return 0 on success, -1 if wrong cateogary is chosen
- * @return -4 if number of digits for product number is  not equal to 5
+ * @return -4 if number of digits for product number is not equal to 5
  * @return -2 if the length of name is greater than 20
  * @return -6 if stock for product added is 0
  * @return -5 if price of product added is 0
@@ -251,10 +251,16 @@ int add_new_product(struct SELLER *seller){
             break;
         }
     }
+
+    if (new_product->price <= 0){
+        printf("Invalid entry! Price cannot be negative or zero\n");
+        return ERROR_PRICE;
+    }
+
     /*Adding discount code*/
     output = 0;
     while (1){
-        printf("Discount code(in digits): ");
+        printf("Discount code(in digits,eg. 12345): ");
         output = scanf("%d", &new_product->discount_code);
         if (validate(output) == OK){
             break;
@@ -264,7 +270,7 @@ int add_new_product(struct SELLER *seller){
     /*Adding discount percentage*/
     output = 0;
     while (1){
-        printf("Discount percentage: ");
+        printf("Equivalent discount percentage(eg. 0.15 for 15): ");
         output = scanf("%f", &new_product->discount_percentage);
         if (validate(output) == OK){
             break;

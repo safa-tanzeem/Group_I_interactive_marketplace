@@ -44,7 +44,7 @@ float update_balance(float wallet_balance, float total_amt_in_cart){
     int flag = 0;
 
     if(wallet_balance < 0 || total_amt_in_cart <0){
-        printf("Error! Wallet balance and total amount in cart can't be equal to zero\n");
+        printf("Error! Wallet balance and total amount in cart can't be less than zero\n");
         return ERROR_VALUE_ZERO;
     }
 

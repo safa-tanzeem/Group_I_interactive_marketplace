@@ -1,0 +1,13 @@
+Function call with product number equal to 0.
+---TEST FAILED----Error! Product number can't be equal to zero--
+
+Function call with quantity of products to be added equal to -1.
+---TEST FAILED----Error! Quantity can't be less than zero--
+
+Function call with Type less than equal to 0.
+---TEST FAILED----Error! Type can't be less than zero--
+
+---Valid input parameters----The stock of product number has increased by 15,The changes are reflected in product.txt file---
+
+---Valid input parameters----The stock of product number has decreased by 15,The changes are reflected in product.txt file---
+

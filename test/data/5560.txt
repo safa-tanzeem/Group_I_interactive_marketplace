@@ -10,3 +10,6 @@ seller5
 10030,1,Muhammad ,123,123
 10031,1,Muhammad ,123,123
 10032,1,Muhammad ,123,123
+10007,5,Buyer test,Address test,123456
+10007,5,Buyer test,Address test,123456
+10007,5,Buyer test,Address test,123456

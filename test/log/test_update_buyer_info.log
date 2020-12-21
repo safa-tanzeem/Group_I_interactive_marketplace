@@ -1,0 +1,24 @@
+Function call with length of buyer's name greater than 20 .
+---TEST FAILED----Invalid input! Please enter less than 20 characters--
+
+Function call with length of buyer's address greater than 40 .
+---TEST FAILED----Invalid input! address can't be more than 40 digits--
+
+Function call with length of buyer's phone number greater than 10.
+---TEST FAILED----Invalid input! phone number can't be more than 10 digits--
+
+Function call with product number equal to 0.
+---TEST FAILED----Invalid product number! Product number can't be less than or equal to 0--
+
+Function call with quantity equal to 0.
+---TEST FAILED----Invalid quantity number! quantity can't be less than or equal to 0
+--
+
+Function call with seller_id equal to 0.
+---TEST FAILED----Invalid seller_id! seller id can't be less than or equal to 0
+
+--
+
+Function call with valid list of input parameters.
+---Valid input parameters----Buyer's information appended in the text file with name:5560.txt---
+
