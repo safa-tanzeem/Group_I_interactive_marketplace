@@ -5,7 +5,7 @@
  *      Author: sufian
  */
 
-#ifndef DISPLAY_SOLD_PRODCUTS_H_
+#ifndef DISPLAY_SOLD_PRODUCTS_H_
 #define DISPLAY_SOLD_PRODUCTS_H_
 
 int display_sold_products(struct SELLER *seller);

@@ -336,8 +336,16 @@ int seller_log_out(struct SELLER * seller)
 
                 /**< store product list */
                 struct SOLD_PRODUCT* sold_product = seller->products_sold;
+                int tmp_counter = 0;
+
                 while (sold_product != NULL)
                 {
+                    if (tmp_counter != 0){
+                        fputs("\n", file);
+                    }
+                    else {
+                        tmp_counter++;
+                    }
                     fprintf(file, SOLD_PRODUCT_INFO_FORMAT,
                             sold_product->product_number,
                             sold_product->quantity,
