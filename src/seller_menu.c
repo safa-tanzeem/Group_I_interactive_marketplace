@@ -11,7 +11,6 @@
 #include <unistd.h>
 #include "../include/seller_manager.h"
 #include "../include/display_inventory.h"
-#include "../include/display_sold_products.h"
 #include "../include/inventory_creation.h"
 #include "../include/common.h"
 #include "../include/seller.h"
@@ -47,9 +46,9 @@ int seller_sub_menu(struct SELLER *seller){
                     "2. Update stock of existing product\n"
                     "3. View Revenue\n"
                     "4. View Inventory\n"
-                    "5. View List of products sold\n"
                     "0. Logout\n"
                     "Enter Choice:");
+            //scanf("%d", &choice);
 
             output = scanf("%d", &choice);
             if (validate(output) == OK){
@@ -124,11 +123,6 @@ int seller_sub_menu(struct SELLER *seller){
         case 4:
             printf("You have chosen to view Inventory\n\n");
             display_inventory(seller);
-            break;
-
-        case 5:
-            printf("You have chosen to view sold products\n\n");
-            display_sold_products(seller);
             break;
 
         default:
